@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using WensAmbulance.Business.Abstractions.Services;
 using WensAmbulance.Domain;
 using WensAmbulance.Domain.Dto;
@@ -15,6 +12,7 @@ namespace WensAmbulance.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(nameof(Role.Constants.Admin))]
     public class WishController : ControllerBase
     {
         private readonly IWishService _wishService;
@@ -26,6 +24,26 @@ namespace WensAmbulance.API.Controllers
             _wishService = wishService;
             _manager = manager;
             _mapper = mapper;
+        }
+
+        [HttpGet("{wishId}/censored")]
+        [AllowAnonymous]
+        public async Task<ActionResult<CensoredWishDto>> GetCensoredById(string wishId)
+        {
+            return Ok(_mapper.Map<CensoredWishDto>(await _wishService.GetByIdAsync(wishId)));
+        }
+
+        [HttpGet("/censored")]
+        [AllowAnonymous]
+        public async Task<ActionResult<List<CensoredWishDto>>> GetAllCensoredAsync()
+        {
+            var wishes = await _wishService.GetAllAsync() as List<Wish>;
+            var wishesDto = new List<CensoredWishDto>();
+
+            foreach (var wish in wishes)
+            {
+
+            }
         }
 
         [HttpGet("{wishId}")]

@@ -22,6 +22,7 @@ namespace WensAmbulance.API.Controllers
         [HttpGet("{patientId}")]
         public async Task<ActionResult<PatientDto>> GetByIdAsync(string patientId)
         {
+            await _patientService.GetByIdAsync(patientId);
             return Ok("Endpoint works.");
         }
 
