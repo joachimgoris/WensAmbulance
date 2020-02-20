@@ -24,22 +24,22 @@ const routes: Routes = [
   {
     path: 'wishes',
     canActivate: [AuthGuardService],
-    component: LoginComponent
+    component: DashboardComponent
   },
   {
     path: 'volunteers',
     canActivate: [AuthGuardService],
-    component: LoginComponent
+    component: DashboardComponent
   },
   {
     path: 'patients',
     canActivate: [AuthGuardService],
-    component: LoginComponent
+    component: DashboardComponent
   },
   {
     path: 'my-wishes',
     canActivate: [AuthGuardService],
-    component: LoginComponent
+    component: DashboardComponent
   },
   {
     path: '**',

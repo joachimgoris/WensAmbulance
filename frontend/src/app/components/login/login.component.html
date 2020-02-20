@@ -2,19 +2,19 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 login-form-1">
-      <h3>Welcome to Ambulance Wens</h3>
+      <h3>Welcome to Ambulance Wish</h3>
       <form action="">
         <div class="form-group">
-          <input #username type="text" class="form-control" placeholder="Gebruikersnaam" value="" />
+          <input #username type="text" class="form-control" placeholder="Username" value="" />
         </div>
         <div class="form-group">
-          <input #password type="password" class="form-control" placeholder="Wachtwoord" value="" />
+          <input #password type="password" class="form-control" placeholder="Password" value="" />
         </div>
         <div class="form-group">
-          <input (click)="login(username.value, password.value)" type="submit" class="btnSubmit" value="Login" />
+          <input (click)="login(username.value, password.value)" type="submit" class="btn btn-primary" value="Login" />
         </div>
         <div class="form-group">
-          <a href="javascript:void(0);" data-toggle="modal" data-target="#register" class="bold">Nog geen account?</a>
+          <a href="javascript:void(0);" data-toggle="modal" data-target="#register" class="bold">No account yet?</a>
         </div>
       </form>
     </div>
@@ -26,7 +26,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <p class="m-0">Registeren</p>
+        <p class="m-0">Register</p>
         <button class="close" type="button" data-dismiss="modal">
           <span aria-hidden="true"><span [innerHTML]="'x' | feather:16"></span></span>
         </button>
@@ -113,7 +113,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row ml-1">
             <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Change data</button>
             <a href="javascript:void(0);" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirm-delete-item"><span [innerHTML]="'trash-2' | feather:16"></span> Delete profile</a>
           </div>
