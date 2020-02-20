@@ -14,7 +14,7 @@ export class NavbarComponent {
   user: User = new User();
 
   constructor(private router: Router, private apiService: ApiService, private authService: AuthService) {
-    if (sessionStorage.getItem('token') != null) {
+    if (sessionStorage.getItem('Token') != null) {
       this.visible = true;
     }
   }
