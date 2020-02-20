@@ -1,26 +1,13 @@
-
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations;
-
+﻿using System;
+using System.Collections.Generic;
 
 namespace WensAmbulance.Domain.Dto
 {
-    public class RegisterModel
+    public class UserDto
     {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-
-        [Required]
         public string FirstName { get; set; }
 
-        [Required]
         public string LastName { get; set; }
-
 
         public string Address { get; set; }
 
@@ -36,5 +23,6 @@ namespace WensAmbulance.Domain.Dto
 
         public string ShirtSize { get; set; }
 
+        public List<string> WishIds { get; set; }
     }
 }

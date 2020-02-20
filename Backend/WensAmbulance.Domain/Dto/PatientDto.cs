@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace WensAmbulance.Domain
+namespace WensAmbulance.Domain.Dto
 {
-    public class Patient
+    public class PatientDto
     {
-        public string PatientId { get; set; }  = Guid.NewGuid().ToString();
+        public string PatientId { get; set; }
 
-        public string Name { get; set; }
         public string FirstName { get; set; }
         
         public string LastName { get; set; }

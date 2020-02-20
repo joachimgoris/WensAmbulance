@@ -36,7 +36,7 @@ namespace WensAmbulance.Business.Services
 
         public async Task<ICollection<Wish>> GetAllAsync()
         {
-            return await _context.Wishes.ToListAsync();
+            return await _context.Wishes.Include(w => w.UserWishes).ToListAsync();
         }
 
         public Task<ICollection<Wish>> GetByFilterAsync(Predicate<Wish> predicate)
@@ -46,7 +46,7 @@ namespace WensAmbulance.Business.Services
 
         public async Task<Wish> GetByIdAsync(string entityId)
         {
-            return await _context.FindAsync<Wish>(entityId);
+            return await _context.Wishes.Include(i => i.UserWishes).FirstOrDefaultAsync(i => i.WishId == entityId);
         }
 
         public async Task<Wish> UpdateAsync(Wish entity)

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WensAmbulance.Data;
 
 namespace WensAmbulance.Data.Migrations
 {
     [DbContext(typeof(WensAmbulanceContext))]
-    partial class WensAmbulanceContextModelSnapshot : ModelSnapshot
+    [Migration("20200220142302_updatedDomainModel")]
+    partial class updatedDomainModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,12 +139,6 @@ namespace WensAmbulance.Data.Migrations
                     b.Property<string>("DNRCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MedicalNotes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-                        
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
