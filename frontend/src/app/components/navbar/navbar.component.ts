@@ -11,15 +11,15 @@ import {AuthService} from '../../services/auth.service';
 })
 export class NavbarComponent {
 
-  visible = false;
+  visible = true;
   user: User = new User();
 
   constructor(private router: Router, private apiService: ApiService, private authService: AuthService) {
-    this.authService.checkLoggedIn().subscribe((value) => {
+    /*this.authService.checkLoggedIn().subscribe((value) => {
       this.visible = value;
     }, () => {
       this.visible = false;
-    });
+    });*/
   }
 
   navigate(route: string): void {

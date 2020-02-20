@@ -23,7 +23,7 @@ export class ApiService {
         const url = `${this._apiURL}/Authentication/login`;
 
         const body = {
-            username: username,
+            email: username,
             password: password
         };
 

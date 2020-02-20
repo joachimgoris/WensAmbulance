@@ -52,7 +52,9 @@ export class LoginComponent implements OnInit {
 
   login(username: string, password: string): void {
     this.apiService.login(username, password).subscribe((value) => {
-      this.apiService.authenticationToken = value.signinToken;
+      console.log(value);
+      this.apiService.authenticationToken = value['signinToken'];
+      sessionStorage.setItem("token", this.apiService.authenticationToken);
     }, (error) => {
       console.log(error.message);
     });

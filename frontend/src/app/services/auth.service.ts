@@ -26,7 +26,7 @@ export class AuthService {
                 }
             }, () => {
                 // Zet hieronder true of te doen alsof je ingelogd bent!
-                observer.next(true);
+                observer.next(false);
             });
         });
     }

@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using WensAmbulance.API.Middleware;
 using WensAmbulance.Business.Abstractions.Services;
 using WensAmbulance.Business.Services;
 using WensAmbulance.Data;
@@ -50,7 +51,7 @@ namespace WensAmbulance.API
 
             services.AddScoped<IWishService, WishService>();
             services.AddScoped<IPatientService, PatientService>();
-
+            services.AddCors();
             services.Configure<TokenSettings>(Configuration.GetSection("Token"));
             services.AddIdentity<User, Role>(options =>
             {
@@ -99,9 +100,11 @@ namespace WensAmbulance.API
                 {
                     s.SwaggerEndpoint("/swagger/v0.1/swagger.json", "SignawelApi v0.1");
                 });
-                app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+                //app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             }
 
+            app.UseOptions();
             app.UseHttpsRedirection();
             
             app.UseRouting();
