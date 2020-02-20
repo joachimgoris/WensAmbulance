@@ -95,13 +95,6 @@ namespace WensAmbulance.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(s =>
-                {
-                    s.SwaggerEndpoint("/swagger/v0.1/swagger.json", "SignawelApi v0.1");
-                });
-
-                //app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             }
 
             app.UseOptions();
