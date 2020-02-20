@@ -20,6 +20,7 @@ import { WishDetailComponent } from './components/wish-detail/wish-detail.compon
 import { VolunteersComponent } from './components/volunteers/volunteers.component';
 import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { NewPatientComponent } from './components/new-patient/new-patient.component';
+import { WishesComponent } from './components/wishes/wishes.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NewPatientComponent } from './components/new-patient/new-patient.compon
     WishDetailComponent,
     VolunteersComponent,
     VolunteerComponent,
-    NewPatientComponent
+    NewPatientComponent,
+    WishesComponent
   ],
   imports: [
     BrowserModule,

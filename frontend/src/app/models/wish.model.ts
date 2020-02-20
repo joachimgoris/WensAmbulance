@@ -2,6 +2,7 @@ import {User} from './user.model';
 import {Patient} from './patient.model';
 
 export class Wish {
+  id: string;
   requestorName: string;
   requestorEmail: string;
   requestorPhoneNumber: string;

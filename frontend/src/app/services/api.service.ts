@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import {Patient} from '../models/patient.model';
+import {Wish} from '../models/wish.model';
 
 @Injectable({
     providedIn: 'root'
@@ -100,5 +101,11 @@ export class ApiService {
       const url = `${this._apiURL}/Patient`;
 
       return this.http.put<any>(url, patient, this.optionsWithCredentials);
+    }
+
+    getAllWishes(): Observable<Wish[]> {
+      const url = `${this._apiURL}/Wish`;
+
+      return this.http.get<Wish[]>(url, this.optionsWithCredentials);
     }
 }
