@@ -109,7 +109,6 @@ namespace WensAmbulance.API.Controllers
             }
             await _wishService.AddAsync(wish);
 
-
             return Ok();
         }
 
@@ -121,9 +120,32 @@ namespace WensAmbulance.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> PutAsync([FromBody] WishDto wishDto)
+        public async Task<ActionResult> UpdateAsync([FromBody] WishDto wishDto)
         {
-            return Ok("Endpoint works.");
+            var wish = new Wish
+            {
+                Date = wishDto.Date,
+                Description = wishDto.Description,
+                Location = wishDto.Location,
+                Title = wishDto.Title,
+                RequestorEmail = wishDto.RequestorEmail,
+                RequestorPhoneNumber = wishDto.RequestorPhoneNumber,
+                WishId = wishDto.WishId,
+                WishRequestor = wishDto.WishRequestor,
+                UserWishes = new List<UserWish>()
+            };
+            foreach (var volunteerId in wishDto.VolunteerIds)
+            {
+                wish.UserWishes.Add(new UserWish
+                {
+                    VolunteerId = volunteerId,
+                    Volunteer = await _manager.FindByIdAsync(volunteerId),
+                    Wish = await _wishService.GetByIdAsync(wishDto.WishId),
+                    WishId = wishDto.WishId
+                });
+            }
+
+            return Ok(await _wishService.UpdateAsync(wish));
         }
     }
 }

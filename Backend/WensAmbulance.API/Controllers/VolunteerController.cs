@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WensAmbulance.Domain;
 
 namespace WensAmbulance.API.Controllers
 {
@@ -11,5 +9,23 @@ namespace WensAmbulance.API.Controllers
     [ApiController]
     public class VolunteerController : ControllerBase
     {
+        private readonly UserManager<User> _userManager;
+
+        public VolunteerController(UserManager<User> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        [HttpGet("{volunteerId}")]
+        public async Task<ActionResult<User>> GetById(string volunteerId)
+        {
+            return Ok(await _userManager.FindByIdAsync(volunteerId));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<User>> GetAllVolunteers()
+        {
+            return Ok(await _userManager.GetUsersInRoleAsync(Role.Constants.Volunteer));
+        }
     }
 }
