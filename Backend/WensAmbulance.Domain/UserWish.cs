@@ -2,7 +2,7 @@
 {
     public class UserWish
     {
-        public string UserId { get; set; }
+        public string VolunteerId { get; set; }
 
         public User Volunteer { get; set; }
 
