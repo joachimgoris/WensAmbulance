@@ -17,6 +17,10 @@ import { PatientsComponent } from './components/patients/patients.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { WishDetailComponent } from './components/wish-detail/wish-detail.component';
 
+import { VolunteersComponent } from './components/volunteers/volunteers.component';
+import { VolunteerComponent } from './components/volunteer/volunteer.component';
+import { NewPatientComponent } from './components/new-patient/new-patient.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,10 @@ import { WishDetailComponent } from './components/wish-detail/wish-detail.compon
     ProfileComponent,
     PatientsComponent,
     PatientComponent,
-    WishDetailComponent
+    WishDetailComponent,
+    VolunteersComponent,
+    VolunteerComponent,
+    NewPatientComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  visible = false;
+  visible = true;
   user: User = new User();
 
   constructor(private router: Router, private apiService: ApiService, private authService: AuthService) {

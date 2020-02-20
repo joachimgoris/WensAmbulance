@@ -6,29 +6,31 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../models/user.model';
 
 @Component({
-  selector: 'app-patient',
-  templateUrl: './patient.component.html',
-  styleUrls: ['./patient.component.scss']
+  selector: 'app-volunteer',
+  templateUrl: './volunteer.component.html',
+  styleUrls: ['./volunteer.component.scss']
 })
-export class PatientComponent implements OnInit {
-  user: Patient = new Patient();
+export class VolunteerComponent implements OnInit {
+  user: User = new User();
   userForm: FormGroup;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
   onSubmit(): void {
-    const user = new Patient();
+    const user = new User();
+    user.username = this.userForm.get('username').value;
     user.firstname = this.userForm.get('firstname').value;
     user.lastname = this.userForm.get('lastname').value;
     user.email = this.userForm.get('email').value;
     user.address = this.userForm.get('address').value;
-    user.birthDate = this.userForm.get('birthDate').value;
-    user.pickupLocation = this.userForm.get('pickupLocation').value;
-    user.DNRCode = this.userForm.get('DNRCode').value;
-    user.accessibility = this.userForm.get('accessibility').value;
-    user.medicalNotes = this.userForm.get('medicalNotes').value;
+    user.ssn = this.userForm.get('ssn').value;
+    user.certificate = this.userForm.get('certificate').value;
+    user.medicalScreening = this.userForm.get('medicalScreening').value;
+    user.badgeNumber = this.userForm.get('badgeNumber').value;
+    user.badgeExpirationDate = this.userForm.get('badgeExpirationDate').value;
+    user.shirtSize = this.userForm.get('shirtSize').value;
     console.log(user);
-    this.apiService.modifyPatient(user).subscribe((value) => {
+    this.apiService.modifyUser(user).subscribe((value) => {
       console.log('User saved!');
     }, (error) => {
       console.log(error.message);
@@ -38,7 +40,7 @@ export class PatientComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = +params['id'];
-      this.apiService.getPatient(id.toString()).subscribe((value) => {
+      this.apiService.getUser(id.toString()).subscribe((value) => {
         this.user = value;
       }, (error) => {
         console.log(error.message);
@@ -58,7 +60,7 @@ export class PatientComponent implements OnInit {
   }
 
   deletePatient(): void {
-    this.apiService.deletePatient(this.user).subscribe((value) => {
+    this.apiService.deleteUser(this.user.id).subscribe((value) => {
       console.log('deleted');
     }, (error) => {
       console.log(error.message);

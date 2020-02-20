@@ -18,16 +18,11 @@ export class AuthService {
      */
     checkLoggedIn(): Observable<boolean> {
         return new Observable<boolean>((observer) => {
-            this.apiService.loggedin().subscribe((value) => {
-                if (value) {
-                    observer.next(true);
-                } else {
-                    observer.next(false);
-                }
-            }, () => {
-                // Zet hieronder true of te doen alsof je ingelogd bent!
-                observer.next(true);
-            });
+            if (sessionStorage.getItem('token') == null) {
+              observer.next(true);
+            } else {
+              observer.next(true); // Maybe check if token is still valid
+            }
         });
     }
 }

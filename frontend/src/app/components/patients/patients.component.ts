@@ -30,4 +30,8 @@ export class PatientsComponent implements OnInit {
     this.router.navigate(['/patient', patient.id]);
   }
 
+  new() {
+    this.router.navigate(['/patient']);
+  }
+
 }
