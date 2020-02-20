@@ -52,6 +52,7 @@ namespace WensAmbulance.API.Controllers
             foreach (var wish in wishes)
             {
                 var dto = _mapper.Map<WishDto>(wish);
+                dto.VolunteerIds = new List<string>();
                 foreach (var item in wish.UserWishes)
                 {
                     dto.VolunteerIds.Add(item.VolunteerId);
