@@ -93,19 +93,18 @@ namespace WensAmbulance.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(s =>
-                {
-                    s.SwaggerEndpoint("/swagger/v0.1/swagger.json", "SignawelApi v0.1");
-                });
-                app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            }
+                s.SwaggerEndpoint("/swagger/v0.1/swagger.json", "SignawelApi v0.1");
+            });
+            app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
 
             app.UseHttpsRedirection();
-            
+
             app.UseRouting();
 
             app.UseAuthorization();
