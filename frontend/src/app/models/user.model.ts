@@ -1,8 +1,12 @@
+import {Wish} from './wish.model';
+
 export class User {
+  id: string;
   username: string;
   password: string;
   firstname: string;
   lastname: string;
+  email: string;
   address: string;
   ssn: string;
   certificate: string;
@@ -10,5 +14,5 @@ export class User {
   badgeNumber: string;
   badgeExpirationDate: Date;
   shirtSize: string;
-  userWishes: string[];
+  userWishes: Wish[];
 }

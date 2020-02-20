@@ -3,6 +3,7 @@ import { PreloadAllModules, Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import {LoginComponent} from './components/login/login.component';
+import {ProfileComponent} from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
   {
     path: 'profile',
     canActivate: [AuthGuardService],
-    component: LoginComponent
+    component: ProfileComponent
   },
   {
     path: 'wishes',

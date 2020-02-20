@@ -40,4 +40,28 @@ export class ApiService {
 
         return this.http.post<boolean>(url, {}, this.optionsWithCredentials);
     }
+
+    getUser(id: string): Observable<User> {
+      const url = `${this._apiURL}/volunteers/${id}`;
+
+      return this.http.get<User>(url, this.optionsWithCredentials);
+    }
+
+    getAllUser(): Observable<User[]> {
+      const url = `${this._apiURL}/volunteers`;
+
+      return this.http.get<User[]>(url, this.optionsWithCredentials);
+    }
+
+    modifyUser(user: User): Observable<any> {
+      const url = `${this._apiURL}/volunteers`;
+
+      return this.http.put(url, user, this.optionsWithCredentials);
+    }
+
+    deleteUser(id: string): Observable<any> {
+      const url = `${this._apiURL}/volunteers/${id}`;
+
+      return this.http.delete(url, this.optionsWithCredentials);
+    }
 }
