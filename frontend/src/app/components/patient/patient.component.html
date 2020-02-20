@@ -1,0 +1,102 @@
+<div class="container-fluid row">
+  <div class="col-xs-0 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+  <div class="card col-xs-12 col-sm-7 col-md-7 col-lg-7 col-xl-6 mt-4">
+    <h5 class="card-header">
+      {{user.firstname}} {{user.lastname}}<br>
+    </h5>
+    <div class="card-body">
+      <form [formGroup]="userForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="firstname">Firstname</label>
+              <input formControlName="firstname" type="text" value="{{user.firstname}}" class="form-control" id="firstname" placeholder="Typ here...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="lastname">Lastname</label>
+              <input formControlName="lastname" type="text" value="{{user.lastname}}" class="form-control" id="lastname" placeholder="Typ here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input formControlName="email" type="email" value="{{user.email}}" class="form-control" id="email" placeholder="Typ here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input formControlName="address" type="text" value="{{user.address}}" class="form-control" id="address" placeholder="Typ here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="birthDate">Birth Date</label>
+              <input formControlName="birthDate" type="date" value="{{user.birthDate}}" class="form-control" id="birthDate" placeholder="Typ here...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pickupLocation">Pickup Location</label>
+              <input formControlName="pickupLocation" type="text" value="{{user.pickupLocation}}" class="form-control" id="pickupLocation" placeholder="Typ here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="DNRCode">DNR Code</label>
+              <input formControlName="DNRCode" type="text" value="{{user.DNRCode}}" class="form-control" id="DNRCode">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="accessibility">Accessibility</label>
+              <input formControlName="accessibility" type="text" value="{{user.accessibility}}" class="form-control" id="accessibility" placeholder="Typ here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="medicalNotes">Medical Notes</label>
+              <input formControlName="medicalNotes" type="text" value="{{user.medicalNotes}}" class="form-control" id="medicalNotes" placeholder="Typ here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Change patient data</button>
+          <a href="javascript:void(0);" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirm-delete-item"><span [innerHTML]="'trash-2' | feather:16"></span> Delete patient</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirm-delete-item" tabindex="-1" role="dialog" *ngIf="user">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span [innerHTML]="'alert-triangle' | feather:16"></span>
+        <button class="close" type="button" data-dismiss="modal">
+          <span aria-hidden="true"><span [innerHTML]="'x' | feather:16"></span></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are your sure you want to delete your account?<br><br>This means you cannot reverse this action and you will no longer have access to this website!</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal"><span [innerHTML]="'x' | feather:16"></span> No</button>
+        <button class="btn btn-danger" data-dismiss="modal" (click)="deletePatient()"><span [innerHTML]="'trash-2' | feather:16"></span> Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

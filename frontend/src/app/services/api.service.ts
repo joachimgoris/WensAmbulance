@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
+import {Patient} from '../models/patient.model';
 
 @Injectable({
     providedIn: 'root'
@@ -48,26 +49,50 @@ export class ApiService {
     }
 
     getUser(id: string): Observable<User> {
-      const url = `${this._apiURL}/volunteers/${id}`;
+      const url = `${this._apiURL}/Volunteer/${id}`;
 
       return this.http.get<User>(url, this.optionsWithCredentials);
     }
 
     getAllUser(): Observable<User[]> {
-      const url = `${this._apiURL}/volunteers`;
+      const url = `${this._apiURL}/Volunteer`;
 
       return this.http.get<User[]>(url, this.optionsWithCredentials);
     }
 
     modifyUser(user: User): Observable<any> {
-      const url = `${this._apiURL}/volunteers`;
+      const url = `${this._apiURL}/Volunteer`;
 
       return this.http.put(url, user, this.optionsWithCredentials);
     }
 
     deleteUser(id: string): Observable<any> {
-      const url = `${this._apiURL}/volunteers/${id}`;
+      const url = `${this._apiURL}/Volunteer/${id}`;
 
       return this.http.delete(url, this.optionsWithCredentials);
+    }
+
+    getAllPatients(): Observable<Patient[]> {
+      const url = `${this._apiURL}/Patient`;
+
+      return this.http.get<Patient[]>(url, this.optionsWithCredentials);
+    }
+
+    getPatient(id: string): Observable<Patient> {
+      const url = `${this._apiURL}/Patient/${id}`;
+
+      return this.http.get<Patient>(url, this.optionsWithCredentials);
+    }
+
+    modifyPatient(patient: Patient): Observable<any> {
+      const url = `${this._apiURL}/Patient/${patient.id}`;
+
+      return this.http.delete<any>(url, this.optionsWithCredentials);
+    }
+
+    deletePatient(patient: Patient): Observable<any> {
+      const url = `${this._apiURL}/Patient`;
+
+      return this.http.put<any>(url, patient, this.optionsWithCredentials);
     }
 }

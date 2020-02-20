@@ -4,6 +4,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import {LoginComponent} from './components/login/login.component';
 import {ProfileComponent} from './components/profile/profile.component';
+import {PatientsComponent} from './components/patients/patients.component';
+import {PatientComponent} from './components/patient/patient.component';
 
 const routes: Routes = [
   {
@@ -33,7 +35,12 @@ const routes: Routes = [
   {
     path: 'patients',
     canActivate: [AuthGuardService],
-    component: DashboardComponent
+    component: PatientsComponent
+  },
+  {
+    path: 'patient/:id',
+    canActivate: [AuthGuardService],
+    component: PatientComponent
   },
   {
     path: 'my-wishes',

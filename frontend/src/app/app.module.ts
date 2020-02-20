@@ -13,6 +13,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PatientsComponent } from './components/patients/patients.component';
+import { PatientComponent } from './components/patient/patient.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     DashboardComponent,
     FeatherPipe,
     NavbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    PatientsComponent,
+    PatientComponent
   ],
   imports: [
     BrowserModule,
