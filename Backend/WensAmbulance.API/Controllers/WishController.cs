@@ -42,8 +42,9 @@ namespace WensAmbulance.API.Controllers
 
             foreach (var wish in wishes)
             {
-
+                wishesDto.Add(_mapper.Map<CensoredWishDto>(wish));
             }
+            return Ok(wishesDto);
         }
 
         [HttpGet("{wishId}")]
