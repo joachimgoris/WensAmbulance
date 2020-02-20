@@ -1,0 +1,124 @@
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 login-form-1">
+      <h3>Welcome to Ambulance Wish</h3>
+      <form action="">
+        <div class="form-group">
+          <input #username type="text" class="form-control" placeholder="Username" value="" />
+        </div>
+        <div class="form-group">
+          <input #password type="password" class="form-control" placeholder="Password" value="" />
+        </div>
+        <div class="form-group">
+          <input (click)="login(username.value, password.value)" type="submit" class="btn btn-primary" value="Login" />
+        </div>
+        <div class="form-group">
+          <a href="javascript:void(0);" data-toggle="modal" data-target="#register" class="bold">No account yet?</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+<div class="modal fade" id="register" tabindex="-1" role="dialog" *ngIf="username">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="m-0">Register</p>
+        <button class="close" type="button" data-dismiss="modal">
+          <span aria-hidden="true"><span [innerHTML]="'x' | feather:16"></span></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="userForm">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input formControlName="username" type="text" class="form-control" id="username" placeholder="Typ here...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="firstname">Firstname</label>
+                <input formControlName="firstname" type="text" class="form-control" id="firstname" placeholder="Typ here...">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input formControlName="lastname" type="text" class="form-control" id="lastname" placeholder="Typ here...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input formControlName="email" type="email" class="form-control" id="email" placeholder="Typ here...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input formControlName="address" type="text" class="form-control" id="address" placeholder="Typ here...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="ssn">Social Security Number</label>
+                <input formControlName="ssn" type="text" class="form-control" id="ssn" placeholder="Typ here...">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="certificate">Certificate</label>
+                <input formControlName="certificate" type="text" class="form-control" id="certificate" placeholder="Typ here...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="medicalScreening">Medical Screening</label>
+                <input formControlName="medicalScreening" type="date" class="form-control" id="medicalScreening">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="shirtSize">Shirt Size</label>
+                <input formControlName="shirtSize" type="text" class="form-control" id="shirtSize" placeholder="Typ here...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="badgeNumber">Badge Number</label>
+                <input formControlName="badgeNumber" type="text" class="form-control" id="badgeNumber" placeholder="Typ here...">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="badgeExpirationDate">Badge Expiration Date</label>
+                <input formControlName="badgeExpirationDate" type="date" class="form-control" id="badgeExpirationDate">
+              </div>
+            </div>
+          </div>
+          <div class="row ml-1">
+            <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Change data</button>
+            <a href="javascript:void(0);" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirm-delete-item"><span [innerHTML]="'trash-2' | feather:16"></span> Delete profile</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
