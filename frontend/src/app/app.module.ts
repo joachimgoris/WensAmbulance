@@ -16,11 +16,12 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PatientsComponent } from './components/patients/patients.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { WishDetailComponent } from './components/wish-detail/wish-detail.component';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { VolunteersComponent } from './components/volunteers/volunteers.component';
 import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { NewPatientComponent } from './components/new-patient/new-patient.component';
 import { WishesComponent } from './components/wishes/wishes.component';
+import { NewWishComponent } from './components/new-wish/new-wish.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { WishesComponent } from './components/wishes/wishes.component';
     VolunteersComponent,
     VolunteerComponent,
     NewPatientComponent,
-    WishesComponent
+    WishesComponent,
+    NewWishComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { WishesComponent } from './components/wishes/wishes.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     AuthGuardService,
