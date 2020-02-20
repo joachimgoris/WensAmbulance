@@ -11,6 +11,7 @@ export class ApiService {
     private _apiURL = environment.apiUrl;
     private optionsWithCredentials = { withCredentials: true };
     private optionsWithJSON = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), withCredentials: true };
+    public authenticationToken: string = null;
 
     constructor(private http: HttpClient) { }
 
@@ -18,19 +19,19 @@ export class ApiService {
      * LOGIN + LOGOUT
      */
 
-    login(username: string, password: string): Observable<boolean> {
-        const url = `${this._apiURL}/login`;
+    login(username: string, password: string): Observable<string> {
+        const url = `${this._apiURL}/Authentication/login`;
 
         const body = {
             username: username,
             password: password
         };
 
-        return this.http.post<boolean>(url, body, this.optionsWithCredentials);
+        return this.http.post<string>(url, body, this.optionsWithCredentials);
     }
 
     register(user: User): Observable<any> {
-      const url = `${this._apiURL}/register`;
+      const url = `${this._apiURL}Authentication/register`;
 
       return this.http.post<any>(url, user, this.optionsWithCredentials);
     }
