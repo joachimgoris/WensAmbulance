@@ -10,4 +10,5 @@ export class Wish {
   location: string;
   volunteers: User[];
   patient: User;
+  evaluation: string;
 }
