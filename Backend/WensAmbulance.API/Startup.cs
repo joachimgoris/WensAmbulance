@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,7 @@ namespace WensAmbulance.API
             });
 
             services.AddDbContext<WensAmbulanceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WensAmbulanceDb")));
+            services.AddAutoMapper(typeof(AutoMapperProfile));
 
             services.AddScoped<IWishService, WishService>();
             services.AddScoped<IPatientService, PatientService>();

@@ -6,6 +6,8 @@ namespace WensAmbulance.Domain.Dto
 {
     public class WishDto
     {
+        public string WishId { get; set; }
+        
         public string WishRequestor { get; set; }
 
         public string RequestorEmail { get; set; }
@@ -20,6 +22,6 @@ namespace WensAmbulance.Domain.Dto
 
         public string Location { get; set; }
 
-        public List<User> Volunteers { get; set; }
+        public List<string> VolunteerIds { get; set; }
     }
 }

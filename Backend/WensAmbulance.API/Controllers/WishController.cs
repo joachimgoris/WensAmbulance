@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,29 +18,78 @@ namespace WensAmbulance.API.Controllers
     {
         private readonly IWishService _wishService;
         private readonly UserManager<User> _manager;
+        private readonly IMapper _mapper; 
 
-        public WishController(IWishService wishService, UserManager<User> manager)
+        public WishController(IWishService wishService, UserManager<User> manager, IMapper mapper)
         {
             _wishService = wishService;
             _manager = manager;
+            _mapper = mapper;
         }
 
+        [HttpGet("{wishId}")]
         public async Task<ActionResult<WishDto>> GetByIdAsync(string wishId)
         {
             var wish = await _wishService.GetByIdAsync(wishId);
-            var userWishes = wish.UserWishes;
-            var users = new List<User>();
-            userWishes.ForEach(uw => users.Add(uw.Volunteer));
-            
-            WishDto wishDto = new WishDto
+            var dto = _mapper.Map<WishDto>(wish);
+            dto.VolunteerIds = new List<string>();
+
+            foreach (var item in wish.UserWishes)
             {
-                
-            };
-            foreach (var user in users)
-            {
-                
+                dto.VolunteerIds.Add(item.VolunteerId);
             }
-            _manager.GetUserIdAsync()
+
+            return dto;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<WishDto>>> GetAllAsync()
+        {
+            return Ok("Endpoint works.");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<WishDto>> AddAsync([FromBody] WishDto wishDto)
+        {
+            var wish = new Wish
+            {
+                Date = wishDto.Date,
+                Description = wishDto.Description,
+                Location = wishDto.Location,
+                Title = wishDto.Title,
+                RequestorEmail = wishDto.RequestorEmail,
+                RequestorPhoneNumber = wishDto.RequestorPhoneNumber,
+                WishId = wishDto.WishId,
+                WishRequestor = wishDto.WishRequestor,
+                UserWishes = new List<UserWish>()
+            };
+            foreach (var volunteerId in wishDto.VolunteerIds)
+            {
+                wish.UserWishes.Add(new UserWish
+                {
+                    VolunteerId = volunteerId,
+                    Volunteer = await _manager.FindByIdAsync(volunteerId),
+                    Wish = await _wishService.GetByIdAsync(wishDto.WishId),
+                    WishId = wishDto.WishId
+                });
+            }
+            await _wishService.AddAsync(wish);
+
+
+            return Ok();
+        }
+
+        [HttpDelete("{wishId}")]
+        public async Task<ActionResult> DeleteAsync(string wishId)
+        {
+            await _wishService.DeleteAsync(wishId);
+            return NoContent();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> PutAsync([FromBody] WishDto wishDto)
+        {
+            return Ok("Endpoint works.");
         }
     }
 }
