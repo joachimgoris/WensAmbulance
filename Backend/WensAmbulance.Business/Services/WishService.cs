@@ -1,27 +1,42 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WensAmbulance.Business.Abstractions;
 using WensAmbulance.Business.Abstractions.Services;
+using WensAmbulance.Data;
 using WensAmbulance.Domain;
 
 namespace WensAmbulance.Business.Services
 {
     public class WishService : IWishService
     {
-        public Task<Wish> AddAsync(Wish entity)
+        private readonly WensAmbulanceContext _context;
+
+        public WishService(WensAmbulanceContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task DeleteAsync(string entityId)
+        public async Task<Wish> AddAsync(Wish entity)
         {
-            throw new NotImplementedException();
+            await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<ICollection<Wish>> GetAllAsync()
+        public async Task DeleteAsync(string entityId)
         {
-            throw new NotImplementedException();
+            var wish = await _context.FindAsync<Wish>(entityId);
+            if (wish == null)
+                return;
+
+            _context.Remove(wish);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<ICollection<Wish>> GetAllAsync()
+        {
+            return await _context.Wishes.ToListAsync();
         }
 
         public Task<ICollection<Wish>> GetByFilterAsync(Predicate<Wish> predicate)
@@ -29,14 +44,16 @@ namespace WensAmbulance.Business.Services
             throw new NotImplementedException();
         }
 
-        public Task<Wish> GetByIdAsync(string entityId)
+        public async Task<Wish> GetByIdAsync(string entityId)
         {
-            throw new NotImplementedException();
+            return await _context.FindAsync<Wish>(entityId);
         }
 
-        public Task<Wish> UpdateAsync(Wish entity)
+        public async Task<Wish> UpdateAsync(Wish entity)
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
     }
 }
