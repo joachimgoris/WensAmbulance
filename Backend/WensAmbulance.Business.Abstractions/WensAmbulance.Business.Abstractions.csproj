@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WensAmbulance.Business.Abstractions\WensAmbulance.Business.Abstractions.csproj" />
     <ProjectReference Include="..\WensAmbulance.Domain\WensAmbulance.Domain.csproj" />
   </ItemGroup>
 

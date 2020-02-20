@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WensAmbulance.Data.Configurations;
 using WensAmbulance.Domain;
 
 namespace WensAmbulance.Data
@@ -21,6 +22,12 @@ namespace WensAmbulance.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-        }       
+            ApplyConfigurations(modelBuilder);
+        }
+
+        private void ApplyConfigurations(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new UserWishConfiguration());
+        }
     }
 }
