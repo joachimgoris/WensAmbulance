@@ -25,13 +25,15 @@ export class LoginComponent implements OnInit {
       medicalScreening: new FormControl('', [Validators.required]),
       badgeNumber: new FormControl('', [Validators.required]),
       badgeExpirationDate: new FormControl('', [Validators.required]),
-      shirtSize: new FormControl('', [Validators.required])
+      shirtSize: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     });
   }
 
   onSubmit(): void {
     const user = new User();
     user.username = this.userForm.get('username').value;
+    user.password = this.userForm.get('password').value;
     user.firstname = this.userForm.get('firstname').value;
     user.lastname = this.userForm.get('lastname').value;
     user.email = this.userForm.get('email').value;

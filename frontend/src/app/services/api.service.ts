@@ -31,7 +31,7 @@ export class ApiService {
     }
 
     register(user: User): Observable<any> {
-      const url = `${this._apiURL}Authentication/register`;
+      const url = `${this._apiURL}/Authentication/register`;
 
       return this.http.post<any>(url, user, this.optionsWithCredentials);
     }
