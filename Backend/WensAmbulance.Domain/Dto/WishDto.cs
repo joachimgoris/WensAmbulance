@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace WensAmbulance.Domain
+namespace WensAmbulance.Domain.Dto
 {
-    public class Wish
+    public class WishDto
     {
-        public string WishId { get; set; } = Guid.NewGuid().ToString();
-
         public string WishRequestor { get; set; }
 
         public string RequestorEmail { get; set; }
@@ -21,6 +20,6 @@ namespace WensAmbulance.Domain
 
         public string Location { get; set; }
 
-        public List<UserWish> UserWishes { get; set; }
+        public List<User> Volunteers { get; set; }
     }
 }

@@ -28,6 +28,8 @@ namespace WensAmbulance.Data
         private void ApplyConfigurations(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new UserWishConfiguration());
+            builder.ApplyConfiguration(new PatientConfiguration());
+            builder.ApplyConfiguration(new WishConfiguration());
         }
     }
 }
