@@ -15,6 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PatientsComponent } from './components/patients/patients.component';
 import { PatientComponent } from './components/patient/patient.component';
+import { WishDetailComponent } from './components/wish-detail/wish-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PatientComponent } from './components/patient/patient.component';
     NavbarComponent,
     ProfileComponent,
     PatientsComponent,
-    PatientComponent
+    PatientComponent,
+    WishDetailComponent
   ],
   imports: [
     BrowserModule,
