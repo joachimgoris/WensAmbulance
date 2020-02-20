@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
       medicalScreening: new FormControl('', [Validators.required]),
       badgeNumber: new FormControl('', [Validators.required]),
       badgeExpirationDate: new FormControl('', [Validators.required]),
-      shirtSize: new FormControl('', [Validators.required])
+      shirtSize: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     });
   }
 
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
     user.username = this.userForm.get('username').value;
     user.firstname = this.userForm.get('firstname').value;
     user.lastname = this.userForm.get('lastname').value;
+    user.password = this.userForm.get('password').value;
     user.email = this.userForm.get('email').value;
     user.address = this.userForm.get('address').value;
     user.ssn = this.userForm.get('ssn').value;

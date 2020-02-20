@@ -19,10 +19,10 @@ export class ApiService {
      */
 
     login(username: string, password: string): Observable<boolean> {
-        const url = `${this._apiURL}/login`;
+        const url = `${this._apiURL}/Authentication/login`;
 
         const body = {
-            username: username,
+            email: username,
             password: password
         };
 
@@ -30,7 +30,7 @@ export class ApiService {
     }
 
     register(user: User): Observable<any> {
-      const url = `${this._apiURL}/register`;
+      const url = `${this._apiURL}/Authentication/register`;
 
       return this.http.post<any>(url, user, this.optionsWithCredentials);
     }
