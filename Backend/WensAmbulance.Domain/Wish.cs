@@ -17,7 +17,7 @@ namespace WensAmbulance.Domain
 
         public DateTime Date { get; set; }
 
-        public string Locatie { get; set; }
+        public string Location { get; set; }
 
         public List<UserWish> UserWishes { get; set; }
     }
