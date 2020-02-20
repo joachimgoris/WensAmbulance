@@ -15,7 +15,7 @@ export class MyWishesComponent implements OnInit {
     let wishIds = ["WISH1", "WISH2", "WISH3"];
     wishIds.forEach(id => {
       let wish = new Wish();
-      wish.ID = id;
+      wish.title = id;
       this.myWishes.push(wish);   
       console.log(this.myWishes)
     });
