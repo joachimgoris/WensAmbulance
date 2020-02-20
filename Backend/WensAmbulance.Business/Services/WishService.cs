@@ -36,7 +36,7 @@ namespace WensAmbulance.Business.Services
 
         public async Task<ICollection<Wish>> GetAllAsync()
         {
-            return await _context.Wishes.ToListAsync();
+            return await _context.Wishes.Include(w => w.UserWishes).ToListAsync();
         }
 
         public Task<ICollection<Wish>> GetByFilterAsync(Predicate<Wish> predicate)

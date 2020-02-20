@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using WensAmbulance.Business.Abstractions.Services;
 using WensAmbulance.Domain;
 using WensAmbulance.Domain.Dto;
@@ -45,7 +46,20 @@ namespace WensAmbulance.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<WishDto>>> GetAllAsync()
         {
-            return Ok("Endpoint works.");
+            var wishes = await _wishService.GetAllAsync() as List<Wish>;
+            var wishesDto = new List<WishDto>();
+
+            foreach (var wish in wishes)
+            {
+                var dto = _mapper.Map<WishDto>(wish);
+                foreach (var item in wish.UserWishes)
+                {
+                    dto.VolunteerIds.Add(item.VolunteerId);
+                }
+                wishesDto.Add(dto);
+            }
+
+            return Ok(wishesDto);
         }
 
         [HttpPost]
