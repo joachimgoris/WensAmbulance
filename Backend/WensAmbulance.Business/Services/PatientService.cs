@@ -1,26 +1,42 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WensAmbulance.Business.Abstractions.Services;
+using WensAmbulance.Data;
 using WensAmbulance.Domain;
 
 namespace WensAmbulance.Business.Services
 {
     public class PatientService : IPatientService
     {
-        public Task<Patient> AddAsync(Patient entity)
+        private readonly WensAmbulanceContext _context;
+
+        public PatientService(WensAmbulanceContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task DeleteAsync(string entityId)
+        public async Task<Patient> AddAsync(Patient entity)
         {
-            throw new NotImplementedException();
+            await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<ICollection<Patient>> GetAllAsync()
+        public async Task DeleteAsync(string entityId)
         {
-            throw new NotImplementedException();
+            var patient = await _context.FindAsync<Patient>(entityId);
+            if (patient == null)
+                return;
+
+            _context.Remove(patient);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<ICollection<Patient>> GetAllAsync()
+        {
+            return await _context.Patients.ToListAsync();
         }
 
         public Task<ICollection<Patient>> GetByFilterAsync(Predicate<Patient> predicate)
@@ -28,14 +44,16 @@ namespace WensAmbulance.Business.Services
             throw new NotImplementedException();
         }
 
-        public Task<Patient> GetByIdAsync(string entityId)
+        public async Task<Patient> GetByIdAsync(string entityId)
         {
-            throw new NotImplementedException();
+            return await _context.FindAsync<Patient>(entityId);
         }
 
-        public Task<Patient> UpdateAsync(Patient entity)
+        public async Task<Patient> UpdateAsync(Patient entity)
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
     }
 }
