@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
 
   login(username: string, password: string): void {
     this.apiService.login(username, password).subscribe((value) => {
-
+      this.apiService.authenticationToken = value.signinToken;
     }, (error) => {
       console.log(error.message);
     });
