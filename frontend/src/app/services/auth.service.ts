@@ -18,8 +18,6 @@ export class AuthService {
      */
     checkLoggedIn(): Observable<boolean> {
         return new Observable<boolean>((observer) => {
-            observer.next(true);
-            /*
             this.apiService.loggedin().subscribe((value) => {
                 if (value) {
                     observer.next(true);
@@ -28,9 +26,8 @@ export class AuthService {
                 }
             }, () => {
                 // Zet hieronder true of te doen alsof je ingelogd bent!
-                observer.next(false);
+                observer.next(true);
             });
-             */
         });
     }
 }
