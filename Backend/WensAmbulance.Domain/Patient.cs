@@ -6,7 +6,9 @@ namespace WensAmbulance.Domain
     {
         public string PatientId { get; set; }  = Guid.NewGuid().ToString();
 
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        
+        public string LastName { get; set; }
 
         public DateTime BirthDate { get; set; }
 
