@@ -108,4 +108,9 @@ export class ApiService {
 
       return this.http.get<Wish[]>(url, this.optionsWithCredentials);
     }
+    getWish(id: string): Observable<Wish> {
+      const url = `${this._apiURL}/Wish/${id}`;
+
+      return this.http.get<Wish>(url, this.optionsWithCredentials);
+    }
 }
