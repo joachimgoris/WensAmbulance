@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 login-form-1">
-      <h3>Welkom bij Ambulance Wens</h3>
+      <h3>Welcome to Ambulance Wens</h3>
       <form action="">
         <div class="form-group">
           <input #username type="text" class="form-control" placeholder="Gebruikersnaam" value="" />
@@ -14,7 +14,7 @@
           <input (click)="login(username.value, password.value)" type="submit" class="btnSubmit" value="Login" />
         </div>
         <div class="form-group">
-          <a href="javascript:void(0);" (click)="register(username.value)" data-toggle="modal" data-target="#register" class="bold">Nog geen account?</a>
+          <a href="javascript:void(0);" data-toggle="modal" data-target="#register" class="bold">Nog geen account?</a>
         </div>
       </form>
     </div>
@@ -32,54 +32,90 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form [formGroup]="userForm">
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
               <div class="form-group">
-                <label for="firstnameR">Voornaam</label>
-                <input #firstnameR type="text" class="form-control" id="firstnameR" placeholder="Typ hier uw voornaam...">
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="lastnameR">Achternaam</label>
-                <input #lastnameR type="text" class="form-control" id="lastnameR" placeholder="Typ hier uw achternaam...">
+                <label for="username">Username</label>
+                <input formControlName="username" type="text" class="form-control" id="username" placeholder="Typ here...">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-6">
               <div class="form-group">
-                <label for="usernameR">Gebruikersnaam</label>
-                <input #usernameR type="text" class="form-control" id="usernameR" placeholder="Typ hier uw gebruikersnaam...">
+                <label for="firstname">Firstname</label>
+                <input formControlName="firstname" type="text" class="form-control" id="firstname" placeholder="Typ here...">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input formControlName="lastname" type="text" class="form-control" id="lastname" placeholder="Typ here...">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
-                <label for="emailR">Email</label>
-                <input #emailR type="text" class="form-control" id="emailR" placeholder="Typ hier uw emailadres...">
+                <label for="email">Email</label>
+                <input formControlName="email" type="email" class="form-control" id="email" placeholder="Typ here...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input formControlName="address" type="text" class="form-control" id="address" placeholder="Typ here...">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="passwordR">Wachtwoord</label>
-                <input #passwordR type="password" class="form-control" id="passwordR" placeholder="Typ hier uw wachtwoord...">
+                <label for="ssn">Social Security Number</label>
+                <input formControlName="ssn" type="text" class="form-control" id="ssn" placeholder="Typ here...">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="passwordRNotSend">Wachtwoord opnieuw</label>
-                <input #passwordRNotSend type="password" class="form-control" id="passwordRNotSend" placeholder="Typ hier uw wachtwoord...">
+                <label for="certificate">Certificate</label>
+                <input formControlName="certificate" type="text" class="form-control" id="certificate" placeholder="Typ here...">
               </div>
             </div>
           </div>
-          <div class="row modal-footer pl-0 pr-2 pb-0 pt-2">
-            <button class="btn btn-secondary" data-dismiss="modal"><span [innerHTML]="'x' | feather:16"></span> Annuleren</button>
-            <button class="btn btn-primary" data-dismiss="modal" (click)="registerComplete(firstnameR.value, lastnameR.value, usernameR.value, emailR.value, passwordR.value, passwordRNotSend.value)" id="registerButton" #registerButton><span [innerHTML]="'send' | feather:16"></span> Registreren</button>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="medicalScreening">Medical Screening</label>
+                <input formControlName="medicalScreening" type="date" class="form-control" id="medicalScreening">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="shirtSize">Shirt Size</label>
+                <input formControlName="shirtSize" type="text" class="form-control" id="shirtSize" placeholder="Typ here...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="badgeNumber">Badge Number</label>
+                <input formControlName="badgeNumber" type="text" class="form-control" id="badgeNumber" placeholder="Typ here...">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="badgeExpirationDate">Badge Expiration Date</label>
+                <input formControlName="badgeExpirationDate" type="date" class="form-control" id="badgeExpirationDate">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Change data</button>
+            <a href="javascript:void(0);" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirm-delete-item"><span [innerHTML]="'trash-2' | feather:16"></span> Delete profile</a>
           </div>
         </form>
       </div>

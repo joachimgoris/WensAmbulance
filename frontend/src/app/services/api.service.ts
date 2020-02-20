@@ -18,12 +18,12 @@ export class ApiService {
      * LOGIN + LOGOUT
      */
 
-    login(volunteer: User): Observable<boolean> {
+    login(username: string, password: string): Observable<boolean> {
         const url = `${this._apiURL}/login`;
 
         const body = {
-            username: volunteer.username,
-            password: volunteer.password
+            username: username,
+            password: password
         };
 
         return this.http.post<boolean>(url, body, this.optionsWithCredentials);
