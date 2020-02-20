@@ -29,6 +29,12 @@ export class ApiService {
         return this.http.post<boolean>(url, body, this.optionsWithCredentials);
     }
 
+    register(user: User): Observable<any> {
+      const url = `${this._apiURL}/register`;
+
+      return this.http.post<any>(url, user, this.optionsWithCredentials);
+    }
+
     loggedin(): Observable<boolean> {
         const url = `${this._apiURL}/loggedin`;
 

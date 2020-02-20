@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     user.badgeExpirationDate = this.userForm.get('badgeExpirationDate').value;
     user.shirtSize = this.userForm.get('shirtSize').value;
     console.log(user);
-    this.apiService.modifyUser(user).subscribe((value) => {
+    this.apiService.register(user).subscribe((value) => {
       console.log('User saved!');
     }, (error) => {
       console.log(error.message);
