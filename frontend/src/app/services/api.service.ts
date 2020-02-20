@@ -84,6 +84,12 @@ export class ApiService {
       return this.http.get<Patient>(url, this.optionsWithCredentials);
     }
 
+    addPatient(patient: Patient): Observable<any> {
+      const url = `${this._apiURL}/Patient`;
+
+      return this.http.post<any>(url, patient, this.optionsWithCredentials);
+    }
+
     modifyPatient(patient: Patient): Observable<any> {
       const url = `${this._apiURL}/Patient/${patient.id}`;
 

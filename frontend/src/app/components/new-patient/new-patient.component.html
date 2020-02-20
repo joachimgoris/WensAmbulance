@@ -1,0 +1,81 @@
+<div class="container-fluid row">
+  <div class="col-xs-0 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+  <div class="card col-xs-12 col-sm-7 col-md-7 col-lg-7 col-xl-6 mt-4">
+    <h5 class="card-header">
+      New patient<br>
+    </h5>
+    <div class="card-body">
+      <form [formGroup]="userForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="firstname">Firstname</label>
+              <input formControlName="firstname" type="text" value="{{user.firstname}}" class="form-control" id="firstname" placeholder="Type here...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="lastname">Lastname</label>
+              <input formControlName="lastname" type="text" value="{{user.lastname}}" class="form-control" id="lastname" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input formControlName="email" type="email" value="{{user.email}}" class="form-control" id="email" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input formControlName="address" type="text" value="{{user.address}}" class="form-control" id="address" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="birthDate">Birth Date</label>
+              <input formControlName="birthDate" type="date" value="{{user.birthDate}}" class="form-control" id="birthDate" placeholder="Type here...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pickupLocation">Pickup Location</label>
+              <input formControlName="pickupLocation" type="text" value="{{user.pickupLocation}}" class="form-control" id="pickupLocation" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="DNRCode">DNR Code</label>
+              <input formControlName="DNRCode" type="text" value="{{user.DNRCode}}" class="form-control" id="DNRCode" placeholder="Type here...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="accessibility">Accessibility</label>
+              <input formControlName="accessibility" type="text" value="{{user.accessibility}}" class="form-control" id="accessibility" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="medicalNotes">Medical Notes</label>
+              <input formControlName="medicalNotes" type="text" value="{{user.medicalNotes}}" class="form-control" id="medicalNotes" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Add patient</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
