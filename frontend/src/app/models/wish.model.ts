@@ -1,4 +1,5 @@
 import {User} from './user.model';
+import {Patient} from './patient.model';
 
 export class Wish {
   requestorName: string;
@@ -9,6 +10,6 @@ export class Wish {
   date: Date;
   location: string;
   volunteers: User[];
-  patient: User;
+  patient: Patient;
   evaluation: string;
 }

@@ -6,6 +6,7 @@ import {LoginComponent} from './components/login/login.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {PatientsComponent} from './components/patients/patients.component';
 import {PatientComponent} from './components/patient/patient.component';
+import { WishDetailComponent } from './components/wish-detail/wish-detail.component';
 import {VolunteersComponent} from './components/volunteers/volunteers.component';
 import {VolunteerComponent} from './components/volunteer/volunteer.component';
 import {NewPatientComponent} from './components/new-patient/new-patient.component';
@@ -29,6 +30,10 @@ const routes: Routes = [
     path: 'wishes',
     canActivate: [AuthGuardService],
     component: DashboardComponent
+  },
+  {
+    path:'wishesdetail',
+    component: WishDetailComponent
   },
   {
     path: 'volunteers',

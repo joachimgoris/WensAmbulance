@@ -15,6 +15,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PatientsComponent } from './components/patients/patients.component';
 import { PatientComponent } from './components/patient/patient.component';
+import { WishDetailComponent } from './components/wish-detail/wish-detail.component';
+
 import { VolunteersComponent } from './components/volunteers/volunteers.component';
 import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { NewPatientComponent } from './components/new-patient/new-patient.component';
@@ -29,6 +31,7 @@ import { NewPatientComponent } from './components/new-patient/new-patient.compon
     ProfileComponent,
     PatientsComponent,
     PatientComponent,
+    WishDetailComponent,
     VolunteersComponent,
     VolunteerComponent,
     NewPatientComponent
