@@ -10,6 +10,7 @@ import {Patient} from '../../models/patient.model';
 })
 export class NewPatientComponent implements OnInit {
   userForm: FormGroup;
+  user: Patient = new Patient();
 
   constructor(private apiService: ApiService) { }
 

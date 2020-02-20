@@ -11,7 +11,7 @@ import {User} from '../../models/user.model';
   styleUrls: ['./volunteer.component.scss']
 })
 export class VolunteerComponent implements OnInit {
-  user: Patient = new Patient();
+  user: User = new User();
   userForm: FormGroup;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) { }
@@ -40,7 +40,7 @@ export class VolunteerComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = +params['id'];
-      this.apiService.getPatient(id.toString()).subscribe((value) => {
+      this.apiService.getUser(id.toString()).subscribe((value) => {
         this.user = value;
       }, (error) => {
         console.log(error.message);
@@ -60,7 +60,7 @@ export class VolunteerComponent implements OnInit {
   }
 
   deletePatient(): void {
-    this.apiService.deletePatient(this.user).subscribe((value) => {
+    this.apiService.deleteUser(this.user.id).subscribe((value) => {
       console.log('deleted');
     }, (error) => {
       console.log(error.message);
