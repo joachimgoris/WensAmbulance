@@ -73,6 +73,7 @@ export class ProfileComponent implements OnInit {
 
     this.apiService.modifyUser(this.user).subscribe((value) => {
       console.log('User saved!');
+      this.fetchUser();
     }, (error) => {
       console.log(error.message);
     });

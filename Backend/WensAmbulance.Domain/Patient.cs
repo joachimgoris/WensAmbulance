@@ -6,13 +6,13 @@ namespace WensAmbulance.Domain
     {
         public string PatientId { get; set; }  = Guid.NewGuid().ToString();
 
-        public string FirstName { get; set; }
+        public string Firstname { get; set; }
         
-        public string LastName { get; set; }
+        public string Lastname { get; set; }
 
         public DateTime BirthDate { get; set; }
 
-        public string PickUpLocation { get; set; }
+        public string PickupLocation { get; set; }
 
         public string DNRCode { get; set; }
 
