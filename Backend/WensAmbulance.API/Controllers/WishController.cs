@@ -48,6 +48,8 @@ namespace WensAmbulance.API.Controllers
         public async Task<ActionResult<WishDto>> GetByIdAsync(string wishId)
         {
             var wish = await _wishService.GetByIdAsync(wishId);
+            if (wish == null)
+                return NoContent();
             var dto = _mapper.Map<WishDto>(wish);
             dto.VolunteerIds = new List<string>();
 
@@ -90,7 +92,7 @@ namespace WensAmbulance.API.Controllers
                 Title = wishDto.Title,
                 RequestorEmail = wishDto.RequestorEmail,
                 RequestorPhoneNumber = wishDto.RequestorPhoneNumber,
-                WishId = wishDto.WishId,
+                WishId = wishDto.Id,
                 WishRequestor = wishDto.WishRequestor,
                 UserWishes = new List<UserWish>()
             };
@@ -100,8 +102,8 @@ namespace WensAmbulance.API.Controllers
                 {
                     VolunteerId = volunteerId,
                     Volunteer = await _manager.FindByIdAsync(volunteerId),
-                    Wish = await _wishService.GetByIdAsync(wishDto.WishId),
-                    WishId = wishDto.WishId
+                    Wish = await _wishService.GetByIdAsync(wishDto.Id),
+                    WishId = wishDto.Id
                 });
             }
             await _wishService.AddAsync(wish);
@@ -127,7 +129,7 @@ namespace WensAmbulance.API.Controllers
                 Title = wishDto.Title,
                 RequestorEmail = wishDto.RequestorEmail,
                 RequestorPhoneNumber = wishDto.RequestorPhoneNumber,
-                WishId = wishDto.WishId,
+                WishId = wishDto.Id,
                 WishRequestor = wishDto.WishRequestor,
                 UserWishes = new List<UserWish>()
             };
@@ -137,8 +139,8 @@ namespace WensAmbulance.API.Controllers
                 {
                     VolunteerId = volunteerId,
                     Volunteer = await _manager.FindByIdAsync(volunteerId),
-                    Wish = await _wishService.GetByIdAsync(wishDto.WishId),
-                    WishId = wishDto.WishId
+                    Wish = await _wishService.GetByIdAsync(wishDto.Id),
+                    WishId = wishDto.Id
                 });
             }
 

@@ -4,7 +4,7 @@ namespace WensAmbulance.Domain.Dto
 {
     public class PatientDto
     {
-        public string PatientId { get; set; }
+        public string Id { get; set; }
 
         public string FirstName { get; set; }
         

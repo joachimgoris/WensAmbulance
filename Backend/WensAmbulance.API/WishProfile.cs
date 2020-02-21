@@ -8,8 +8,8 @@ namespace WensAmbulance.API
     {
         public WishProfile()
         {
-            CreateMap<Wish, WishDto>();
-            CreateMap<Wish, CensoredWishDto>();
+            CreateMap<Wish, WishDto>().ForMember(w => w.Id, src => src.MapFrom(dto => dto.WishId));
+            CreateMap<Wish, CensoredWishDto>().ForMember(w => w.Id, src => src.MapFrom(dto => dto.WishId));
         }
     }
 }
