@@ -6,7 +6,7 @@ namespace WensAmbulance.Domain.Dto
 {
     public class WishDto
     {
-        public string WishId { get; set; }
+        public string Id { get; set; }
         
         public string WishRequestor { get; set; }
 

@@ -90,7 +90,7 @@ namespace WensAmbulance.API.Controllers
                 Title = wishDto.Title,
                 RequestorEmail = wishDto.RequestorEmail,
                 RequestorPhoneNumber = wishDto.RequestorPhoneNumber,
-                WishId = wishDto.WishId,
+                WishId = wishDto.Id,
                 WishRequestor = wishDto.WishRequestor,
                 UserWishes = new List<UserWish>()
             };
@@ -100,8 +100,8 @@ namespace WensAmbulance.API.Controllers
                 {
                     VolunteerId = volunteerId,
                     Volunteer = await _manager.FindByIdAsync(volunteerId),
-                    Wish = await _wishService.GetByIdAsync(wishDto.WishId),
-                    WishId = wishDto.WishId
+                    Wish = await _wishService.GetByIdAsync(wishDto.Id),
+                    WishId = wishDto.Id
                 });
             }
             await _wishService.AddAsync(wish);
@@ -127,7 +127,7 @@ namespace WensAmbulance.API.Controllers
                 Title = wishDto.Title,
                 RequestorEmail = wishDto.RequestorEmail,
                 RequestorPhoneNumber = wishDto.RequestorPhoneNumber,
-                WishId = wishDto.WishId,
+                WishId = wishDto.Id,
                 WishRequestor = wishDto.WishRequestor,
                 UserWishes = new List<UserWish>()
             };
@@ -137,8 +137,8 @@ namespace WensAmbulance.API.Controllers
                 {
                     VolunteerId = volunteerId,
                     Volunteer = await _manager.FindByIdAsync(volunteerId),
-                    Wish = await _wishService.GetByIdAsync(wishDto.WishId),
-                    WishId = wishDto.WishId
+                    Wish = await _wishService.GetByIdAsync(wishDto.Id),
+                    WishId = wishDto.Id
                 });
             }
 
