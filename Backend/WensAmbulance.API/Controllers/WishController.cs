@@ -12,7 +12,6 @@ namespace WensAmbulance.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(nameof(Role.Constants.Admin))]
     public class WishController : ControllerBase
     {
         private readonly IWishService _wishService;
@@ -27,14 +26,12 @@ namespace WensAmbulance.API.Controllers
         }
 
         [HttpGet("{wishId}/censored")]
-        [AllowAnonymous]
         public async Task<ActionResult<CensoredWishDto>> GetCensoredById(string wishId)
         {
             return Ok(_mapper.Map<CensoredWishDto>(await _wishService.GetByIdAsync(wishId)));
         }
 
-        [HttpGet("/censored")]
-        [AllowAnonymous]
+        [HttpGet("censored")]
         public async Task<ActionResult<List<CensoredWishDto>>> GetAllCensoredAsync()
         {
             var wishes = await _wishService.GetAllAsync() as List<Wish>;
