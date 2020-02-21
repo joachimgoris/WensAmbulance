@@ -11,6 +11,10 @@ export class TokenInformationService {
   getRole(): string {
       let authenticationToken = sessionStorage.getItem('Token');
 
+      if (authenticationToken == null) {
+        return ;
+      }
+
       let jwtData = authenticationToken.split('.')[1];
       let decodedJwtJsonData = window.atob(jwtData);
       let decodedJwtData = JSON.parse(decodedJwtJsonData);

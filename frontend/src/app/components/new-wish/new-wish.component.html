@@ -54,13 +54,13 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="patient">Patient</label>
-              <ng-multiselect-dropdown [placeholder]="'patient'" [data]="patients" [(ngModel)]="selectedPatients" [settings]="dropdownSettingsPatients"></ng-multiselect-dropdown>
+              <ngx-select-dropdown [config]="config" [options]="patients" [multiple]="false" ></ngx-select-dropdown>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="volunteers">Volunteers</label>
-              <ng-multiselect-dropdown [placeholder]="'volunteers'" [data]="volunteers" [(ngModel)]="selectedVolunteers" [settings]="dropdownSettingsVolunteers"></ng-multiselect-dropdown>
+              <ngx-select-dropdown [config]="config" [options]="volunteers" [multiple]="true" ></ngx-select-dropdown>
             </div>
           </div>
         </div>
