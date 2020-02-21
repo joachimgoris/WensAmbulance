@@ -48,6 +48,8 @@ namespace WensAmbulance.API.Controllers
         public async Task<ActionResult<WishDto>> GetByIdAsync(string wishId)
         {
             var wish = await _wishService.GetByIdAsync(wishId);
+            if (wish == null)
+                return NoContent();
             var dto = _mapper.Map<WishDto>(wish);
             dto.VolunteerIds = new List<string>();
 
