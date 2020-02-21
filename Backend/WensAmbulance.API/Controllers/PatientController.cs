@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WensAmbulance.Business.Abstractions.Services;
-using WensAmbulance.Domain.Dto;
+using WensAmbulance.Domain;
 
 namespace WensAmbulance.API.Controllers
 {
@@ -20,33 +18,35 @@ namespace WensAmbulance.API.Controllers
         }
 
         [HttpGet("{patientId}")]
-        public async Task<ActionResult<PatientDto>> GetByIdAsync(string patientId)
+        public async Task<ActionResult<Patient>> GetByIdAsync(string patientId)
         {
-            return Ok("Endpoint works.");
+            return Ok(await _patientService.GetByIdAsync(patientId));
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<PatientDto>>> GetAllAsync()
+        public async Task<ActionResult<List<Patient>>> GetAllAsync()
         {
-            return Ok("Endpoint works.");
+            return Ok(await _patientService.GetAllAsync());
         }
 
         [HttpDelete("{patientId}")]
         public async Task<ActionResult> DeleteAsync(string patientId)
         {
-            return Ok("Endpoint works.");
+            await _patientService.DeleteAsync(patientId);
+            return NoContent();
         }
 
         [HttpPost]
-        public async Task<ActionResult<PatientDto>> AddAsync([FromBody] PatientDto patientDto)
+        public async Task<ActionResult<Patient>> AddAsync([FromBody] Patient patient)
         {
-            return Ok("Endpoint works.");
+            await _patientService.AddAsync(patient);
+            return Ok(patient);
         }
 
         [HttpPut]
-        public async Task<ActionResult> PutAsync([FromBody] PatientDto patientDto)
+        public async Task<ActionResult> UpdateAsync([FromBody] Patient patient)
         {
-            return Ok("Endpoint works.");
+            return Ok(await _patientService.UpdateAsync(patient));
         }
     }
 }
