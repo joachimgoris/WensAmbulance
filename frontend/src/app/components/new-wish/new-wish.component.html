@@ -1,0 +1,89 @@
+<div class="container-fluid row">
+  <div class="col-xs-0 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+  <div class="card col-xs-12 col-sm-7 col-md-7 col-lg-7 col-xl-6 mt-4">
+    <h5 class="card-header">
+      New wish<br>
+    </h5>
+    <div class="card-body">
+      <form [formGroup]="wishForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="requestorName">Name Requestor</label>
+              <input formControlName="requestorName" type="text" class="form-control" id="requestorName" placeholder="Type here...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="requestorEmail">Email Requestor</label>
+              <input formControlName="requestorEmail" type="email" class="form-control" id="requestorEmail" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="requestorPhoneNumber">Phone Number Requestor</label>
+              <input formControlName="requestorPhoneNumber" type="tel" class="form-control" id="requestorPhoneNumber" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input formControlName="title" type="text" class="form-control" id="title" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input formControlName="description" type="text" class="form-control" id="description" placeholder="Type here...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="date">Date</label>
+              <input formControlName="date" type="date" class="form-control" id="date" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="patient">Patient</label>
+              <ng-multiselect-dropdown [placeholder]="'patient'" [data]="patients" [(ngModel)]="selectedPatients" [settings]="dropdownSettingsPatients"></ng-multiselect-dropdown>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="volunteers">Volunteers</label>
+              <ng-multiselect-dropdown [placeholder]="'volunteers'" [data]="volunteers" [(ngModel)]="selectedVolunteers" [settings]="dropdownSettingsVolunteers"></ng-multiselect-dropdown>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input formControlName="location" type="text" class="form-control" id="location" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="evaluation">Evaluation</label>
+              <input formControlName="evaluation" type="text" class="form-control" id="evaluation" placeholder="Type here...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!wishForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Add patient</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

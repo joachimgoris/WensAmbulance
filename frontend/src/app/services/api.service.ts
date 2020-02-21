@@ -94,18 +94,42 @@ export class ApiService {
     modifyPatient(patient: Patient): Observable<any> {
       const url = `${this._apiURL}/Patient/${patient.id}`;
 
-      return this.http.delete<any>(url, this.optionsWithCredentials);
+      return this.http.put<any>(url, patient, this.optionsWithCredentials);
     }
 
     deletePatient(patient: Patient): Observable<any> {
       const url = `${this._apiURL}/Patient`;
 
-      return this.http.put<any>(url, patient, this.optionsWithCredentials);
+      return this.http.delete<any>(url, this.optionsWithCredentials);
     }
 
     getAllWishes(): Observable<Wish[]> {
       const url = `${this._apiURL}/Wish`;
 
       return this.http.get<Wish[]>(url, this.optionsWithCredentials);
+    }
+
+    addWish(wish: Wish): Observable<any> {
+      const url = `${this._apiURL}/Wish`;
+
+      return this.http.post<any>(url, wish, this.optionsWithCredentials);
+    }
+
+    modifyWish(wish: Wish): Observable<any> {
+      const url = `${this._apiURL}/Wish/${wish.id}`;
+
+      return this.http.put<any>(url, wish, this.optionsWithCredentials);
+    }
+
+    deleteWish(wish: Wish): Observable<any> {
+      const url = `${this._apiURL}/Wish`;
+
+      return this.http.delete<any>(url, this.optionsWithCredentials);
+    }
+    
+    getWish(id: string): Observable<Wish> {
+      const url = `${this._apiURL}/Wish/${id}`;
+
+      return this.http.get<Wish>(url, this.optionsWithCredentials);
     }
 }

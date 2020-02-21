@@ -11,6 +11,7 @@ import {VolunteersComponent} from './components/volunteers/volunteers.component'
 import {VolunteerComponent} from './components/volunteer/volunteer.component';
 import {NewPatientComponent} from './components/new-patient/new-patient.component';
 import {WishesComponent} from './components/wishes/wishes.component';
+import {NewWishComponent} from './components/new-wish/new-wish.component';
 
 const routes: Routes = [
   {
@@ -40,7 +41,7 @@ const routes: Routes = [
   {
     path: 'wish',
     canActivate: [AuthGuardService],
-    component: DashboardComponent
+    component: NewWishComponent
   },
   {
     path: 'volunteers',
