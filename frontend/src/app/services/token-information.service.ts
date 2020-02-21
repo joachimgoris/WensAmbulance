@@ -11,12 +11,6 @@ export class TokenInformationService {
   getRole(): string {
       let authenticationToken = sessionStorage.getItem('Token');
 
-      if(authenticationToken == null){
-        console.log('No authentication token found, user was not logged in.')
-        this.router.navigate(['/login']);
-        return;
-      }
-
       let jwtData = authenticationToken.split('.')[1];
       let decodedJwtJsonData = window.atob(jwtData);
       let decodedJwtData = JSON.parse(decodedJwtJsonData);
