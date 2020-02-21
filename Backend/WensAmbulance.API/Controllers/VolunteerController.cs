@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WensAmbulance.Domain;
+using WensAmbulance.Domain.Dto;
 
 namespace WensAmbulance.API.Controllers
 {
@@ -17,9 +18,27 @@ namespace WensAmbulance.API.Controllers
         }
 
         [HttpGet("{volunteerId}")]
-        public async Task<ActionResult<User>> GetById(string volunteerId)
+        public async Task<ActionResult<UserDto>> GetById(string volunteerId)
         {
-            return Ok(await _userManager.FindByIdAsync(volunteerId));
+            //return Ok(await _userManager.FindByIdAsync(volunteerId));
+            var user = await _userManager.FindByIdAsync(volunteerId);
+            var userDto = new UserDto
+            {
+                Firstname = user.FirstName,
+                Lastname = user.LastName,
+                Username = user.UserName,
+                Address = user.Address,
+                Email = user.Email,
+                SSN = user.SSN,
+                Certificate = user.Certificate,
+                MedicalScreening = user.MedicalScreening,
+                BadgeNumber = user.BadgeNumber,
+                BadgeExpirationDate = user.BadgeExpirationDate,
+                ShirtSize = user.ShirtSize,
+                WishIds = null
+            };
+
+            return Ok(userDto);
         }
 
         [HttpGet]

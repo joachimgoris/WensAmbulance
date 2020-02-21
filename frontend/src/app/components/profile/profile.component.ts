@@ -3,6 +3,7 @@ import {User} from '../../models/user.model';
 import {ApiService} from '../../services/api.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Wish} from '../../models/wish.model';
+import { TokenInformationService } from 'src/app/services/token-information.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,22 +14,33 @@ export class ProfileComponent implements OnInit {
   userForm: FormGroup;
   user: User = new User();
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private tokenInformationService: TokenInformationService) { }
 
   ngOnInit() {
+    this.fetchUser();
+    
+    while(this.user == null) {}
+
     this.userForm = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      firstname: new FormControl('', [Validators.required]),
-      lastname: new FormControl('', [Validators.required]),
-      email: new FormControl('@email.com', [Validators.required, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}')]),
-      address: new FormControl('', [Validators.required]),
-      ssn: new FormControl('', [Validators.required]),
-      certificate: new FormControl('', [Validators.required]),
-      medicalScreening: new FormControl('', [Validators.required]),
-      badgeNumber: new FormControl('', [Validators.required]),
-      badgeExpirationDate: new FormControl('', [Validators.required]),
-      shirtSize: new FormControl('', [Validators.required])
+      username: new FormControl(this.user.username ? this.user.username : null, [Validators.required]),
+      firstname: new FormControl(this.user.firstname ? this.user.firstname : null, [Validators.required]),
+      lastname: new FormControl(this.user.lastname ? this.user.lastname : null, [Validators.required]),
+      email: new FormControl(this.user.email ? this.user.email : null, [Validators.required, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}')]),
+      address: new FormControl(this.user.address ? this.user.address : null, [Validators.required]),
+      ssn: new FormControl(this.user.ssn ? this.user.ssn : null, [Validators.required]),
+      certificate: new FormControl(this.user.certificate ? this.user.certificate : null, [Validators.required]),
+      medicalScreening: new FormControl(this.user.medicalScreening ? this.user.medicalScreening : null, [Validators.required]),
+      badgeNumber: new FormControl(this.user.badgeNumber ? this.user.badgeNumber : null, [Validators.required]),
+      badgeExpirationDate: new FormControl(this.user.badgeExpirationDate ? this.user.badgeExpirationDate : null, [Validators.required]),
+      shirtSize: new FormControl(this.user.shirtSize ? this.user.shirtSize : null, [Validators.required])
     });
+  }
+
+  fetchUser() {
+    this.apiService.getUser(this.tokenInformationService.getUserId()).subscribe(data => {this.user = data; console.log(this.user), (error) => {
+      this.user = new User();
+      console.log('An error has occured');
+    }});
   }
 
   onSubmit(): void {
