@@ -55,7 +55,7 @@ export class NewWishComponent implements OnInit {
 
   ngOnInit(): void {
     this.wishForm = new FormGroup({
-      requestorName: new FormControl('', [Validators.required]),
+      wishRequestor: new FormControl('', [Validators.required]),
       requestorEmail: new FormControl('', [Validators.required]),
       requestorPhoneNumber: new FormControl('', [Validators.required]),
       title: new FormControl('', [Validators.required]),
@@ -89,7 +89,7 @@ export class NewWishComponent implements OnInit {
 
   onSubmit(): void {
     const user = new Wish();
-    user.requestorName = this.wishForm.get('requestorName').value;
+    user.wishRequestor = this.wishForm.get('wishRequestor').value;
     user.requestorEmail = this.wishForm.get('requestorEmail').value;
     user.requestorPhoneNumber = this.wishForm.get('requestorPhoneNumber').value;
     user.title = this.wishForm.get('title').value;
