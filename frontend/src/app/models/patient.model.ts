@@ -1,7 +1,7 @@
 import {Wish} from './wish.model';
 
 export class Patient {
-  id: string;
+  patientId: string;
   firstname: string;
   lastname: string;
   email: string;

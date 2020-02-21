@@ -42,7 +42,7 @@ export class PatientComponent implements OnInit {
         this.user = value;
       }, (error) => {
         console.log(error.message);
-        this.user = this.getPatients().find(p => p.id === id.toString());
+        this.user = this.getPatients().find(p => p.patientId === id.toString());
       });
     });
     this.userForm = new FormGroup({
@@ -69,7 +69,7 @@ export class PatientComponent implements OnInit {
   getPatients(): Patient[] {
     let p = [];
     let patient = new Patient();
-    patient.id = '1';
+    patient.patientId = '1';
     patient.firstname = "Jan";
     patient.lastname = "Vekemans";
     patient.email = "jan.vekemans@outlook.be";
@@ -81,7 +81,7 @@ export class PatientComponent implements OnInit {
     patient.medicalNotes = "/";
     p = p.concat(patient);
     patient = new Patient();
-    patient.id = '2';
+    patient.patientId = '2';
     patient.firstname = "Tim";
     patient.lastname = "Bergen";
     patient.email = "foobar@foo.bar";
@@ -93,7 +93,7 @@ export class PatientComponent implements OnInit {
     patient.medicalNotes = "FooBar";
     p = p.concat(patient);
     patient = new Patient();
-    patient.id = '3';
+    patient.patientId = '3';
     patient.firstname = "Jannes";
     patient.lastname = "Avers";
     patient.email = "foobar@foo.bar";

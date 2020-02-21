@@ -81,7 +81,7 @@ export class NewWishComponent implements OnInit {
     }, (error) => {
       console.log(error.message);
       const user = new Patient();
-      user.id = '1';
+      user.patientId = '1';
       user.firstname = 'Joske';
       this.patients = [user];
     });

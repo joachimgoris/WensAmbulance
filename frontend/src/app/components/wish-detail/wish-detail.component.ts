@@ -40,7 +40,7 @@ export class WishDetailComponent implements OnInit {
 
   createDummyPatient(){
     this.patient = new Patient();
-    this.patient.id = '1';
+    this.patient.patientId = '1';
     this.patient.firstname = "Foo";
     this.patient.lastname = "Bar";
     this.patient.email = "foobar@foo.bar";
