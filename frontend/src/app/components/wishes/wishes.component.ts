@@ -22,17 +22,17 @@ export class WishesComponent implements OnInit {
       let patient = new Wish();
       patient.id = '1';
       patient.date = new Date();
-      patient.requestorName = 'Jan Konings';
+      patient.wishRequestor = 'Jan Konings';
       this.wishes = this.wishes.concat(patient);
       patient = new Wish();
       patient.id = '2';
       patient.date = new Date();
-      patient.requestorName = 'Bert Clijsner';
+      patient.wishRequestor = 'Bert Clijsner';
       this.wishes = this.wishes.concat(patient);
       patient = new Wish();
       patient.id = '3';
       patient.date = new Date();
-      patient.requestorName = 'Berend Brokkepap';
+      patient.wishRequestor = 'Berend Brokkepap';
       this.wishes = this.wishes.concat(patient);
     });
   }

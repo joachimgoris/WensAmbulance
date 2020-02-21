@@ -84,7 +84,7 @@ export class WishDetailComponent implements OnInit {
 
   createDummyWish(){
     this.wish = new Wish();
-    this.wish.requestorName = "John Doe";
+    this.wish.wishRequestor = "John Doe";
     this.wish.requestorEmail = "johndoe@gmail.com";
     this.wish.requestorPhoneNumber = "+0123456789";
     this.wish.title = "See the sea for one last time";
