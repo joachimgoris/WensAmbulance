@@ -27,5 +27,12 @@ namespace WensAmbulance.API.Controllers
         {
             return Ok(await _userManager.GetUsersInRoleAsync(Role.Constants.Volunteer));
         }
+
+        [HttpPut]
+        public async Task<ActionResult<User>> UpdateVolunteer([FromBody] User user)
+        {
+            await _userManager.UpdateAsync(user);
+            return NoContent();
+        }
     }
 }
