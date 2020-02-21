@@ -15,8 +15,15 @@ export class AppComponent {
   }
 
   constructor() {
+    this.checkNav();
+  }
+
+  checkNav() {
     if (sessionStorage.getItem('Token') != null) {
       this.visible = true;
     }
+    setTimeout(() => {
+      this.checkNav();
+    }, 100);
   }
 }

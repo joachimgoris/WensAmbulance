@@ -43,7 +43,7 @@ export class NewWishComponent implements OnInit {
     this.wishForm = new FormGroup({
       requestorName: new FormControl('', [Validators.required]),
       requestorEmail: new FormControl('', [Validators.required]),
-      requestorPhoneNumber: new FormControl('@email.com', [Validators.required, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}')]),
+      requestorPhoneNumber: new FormControl('', [Validators.required]),
       title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       date: new FormControl('', [Validators.required]),

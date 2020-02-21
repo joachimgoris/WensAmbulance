@@ -2,9 +2,8 @@
   <a href="javascript:void(0);" (click)="navigate('/')" class="mr-2"><img src="assets/logo.png" width="50" height="50"></a>
   <a href="javascript:void(0);" (click)="navigate('/my-wishes')" class="mr-3"><span [innerHTML]="'inbox' | feather:16"></span> My Wishes</a>
   <a href="javascript:void(0);" (click)="navigate('/profile')" class="mr-3"><span [innerHTML]="'settings' | feather:16"></span> Profile</a>
-  <a href="javascript:void(0);" (click)="navigate('/wishes')" class="mr-3"><span [innerHTML]="'heart' | feather:16"></span> Wishes</a>
-  <a href="javascript:void(0);" (click)="navigate('/volunteers')" class="mr-3"><span [innerHTML]="'users' | feather:16"></span> Volunteers</a>
-  <a href="javascript:void(0);" (click)="navigate('/patients')" class="mr-3"><span [innerHTML]="'users' | feather:16"></span> Patients</a>
+  <a href="javascript:void(0);" *ngIf="!isVolunteer()" (click)="navigate('/wishes')" class="mr-3"><span [innerHTML]="'heart' | feather:16"></span> Wishes</a>
+  <a href="javascript:void(0);" *ngIf="!isVolunteer()" (click)="navigate('/volunteers')" class="mr-3"><span [innerHTML]="'users' | feather:16"></span> Volunteers</a>
+  <a href="javascript:void(0);" *ngIf="!isVolunteer()" (click)="navigate('/patients')" class="mr-3"><span [innerHTML]="'users' | feather:16"></span> Patients</a>
   <div class="ml-auto"></div>
-
 </nav>
