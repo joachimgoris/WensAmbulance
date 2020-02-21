@@ -31,11 +31,23 @@ namespace WensAmbulance.API
             Configuration = configuration;
         }
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var corsBuilder = new Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder();
+            corsBuilder.AllowAnyHeader();
+            corsBuilder.AllowAnyMethod();
+            corsBuilder.WithOrigins("http://localhost:4200", "https://localhost:5001", "https://localhost:44312");
+            corsBuilder.AllowCredentials();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins, corsBuilder.Build());
+            });
             services.AddControllers();
 
             services.AddSwaggerGen(s =>
@@ -100,7 +112,7 @@ namespace WensAmbulance.API
             {
                 s.SwaggerEndpoint("/swagger/v0.1/swagger.json", "SignawelApi v0.1");
             });
-            app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(MyAllowSpecificOrigins);
 
 
             app.UseHttpsRedirection();
