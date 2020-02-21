@@ -19,11 +19,21 @@ export class VolunteersComponent implements OnInit {
       this.volunteers = value;
     }, (error) => {
       console.log(error.message);
-      const patient = new User();
+      let patient = new User();
       patient.firstname = 'Jan';
-      patient.lastname = 'Veke';
-      patient.id = '123';
-      this.volunteers = [patient, patient, patient];
+      patient.lastname = 'Peeters';
+      patient.id = '1';
+      this.volunteers = this.volunteers.concat(patient);
+      patient = new User();
+      patient.firstname = 'Vic';
+      patient.lastname = 'Pipeleers';
+      patient.id = '2';
+      this.volunteers = this.volunteers.concat(patient);
+      patient = new User();
+      patient.firstname = 'Stef';
+      patient.lastname = 'Koninckx';
+      patient.id = '3';
+      this.volunteers = this.volunteers.concat(patient);
     });
   }
 

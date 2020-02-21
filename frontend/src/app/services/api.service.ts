@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import {Patient} from '../models/patient.model';
 import {Wish} from '../models/wish.model';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,7 @@ export class ApiService {
     private optionsWithCredentials = { withCredentials: true };
     private optionsWithJSON = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), withCredentials: true };
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router: Router) { }
 
     /**
      * LOGIN + LOGOUT
@@ -43,10 +44,11 @@ export class ApiService {
         return this.http.get<boolean>(url, this.optionsWithCredentials);
     }
 
-    logout(): Observable<boolean> {
-        const url = `${this._apiURL}/logout`;
-
-        return this.http.post<boolean>(url, {}, this.optionsWithCredentials);
+    logout(){
+        // const url = `${this._apiURL}/logout`;
+        sessionStorage.removeItem('Token');
+        this.router.navigate(['/login']);
+        // return this.http.post<boolean>(url, {}, this.optionsWithCredentials);
     }
 
     getUser(id: string): Observable<User> {

@@ -88,11 +88,7 @@ export class ProfileComponent implements OnInit {
   }
 
   logout(): void {
-    this.apiService.logout().subscribe((value) => {
-      console.log('Logged out!');
-    }, (error) => {
-      console.log(error.message);
-    });
+    this.apiService.logout();
   }
 
 }
