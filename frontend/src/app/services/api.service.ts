@@ -94,7 +94,7 @@ export class ApiService {
     }
 
     modifyPatient(patient: Patient): Observable<any> {
-      const url = `${this._apiURL}/Patient/${patient.id}`;
+      const url = `${this._apiURL}/Patient/${patient.patientId}`;
 
       return this.http.put<any>(url, patient, this.optionsWithCredentials);
     }
