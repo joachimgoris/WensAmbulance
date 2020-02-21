@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WensAmbulance.Domain;
@@ -43,9 +44,32 @@ namespace WensAmbulance.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<User>> GetAllVolunteers()
+        public async Task<ActionResult<List<UserDto>>> GetAllVolunteers()
         {
-            return Ok(await _userManager.GetUsersInRoleAsync(Role.Constants.Volunteer));
+            var volunteers = await _userManager.GetUsersInRoleAsync(Role.Constants.Volunteer);
+            var volunteersDto = new List<UserDto>();
+
+            foreach (var user in volunteers)
+            {
+                volunteersDto.Add(new UserDto
+                {
+                    Id = user.Id,
+                    Firstname = user.FirstName,
+                    Lastname = user.LastName,
+                    Username = user.UserName,
+                    Address = user.Address,
+                    Email = user.Email,
+                    SSN = user.SSN,
+                    Certificate = user.Certificate,
+                    MedicalScreening = user.MedicalScreening,
+                    BadgeNumber = user.BadgeNumber,
+                    BadgeExpirationDate = user.BadgeExpirationDate,
+                    ShirtSize = user.ShirtSize,
+                    WishIds = null
+                });
+            }
+
+            return Ok(volunteersDto);
         }
 
         [HttpPut]
