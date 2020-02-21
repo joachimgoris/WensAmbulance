@@ -63,7 +63,7 @@ export class ApiService {
 
     modifyUser(user: User): Observable<any> {
       const url = `${this._apiURL}/Volunteer`;
-
+      console.log(user);
       return this.http.put(url, user, this.optionsWithCredentials);
     }
 

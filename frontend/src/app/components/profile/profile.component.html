@@ -39,14 +39,6 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <label for="password">Password</label>
-              <input formControlName="password" type="password" value="{{user.password}}" class="form-control" id="password" placeholder="">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="form-group">
               <label for="address">Address</label>
               <input formControlName="address" type="text" value="{{user.address}}" class="form-control" id="address" placeholder="Typ here...">
             </div>
@@ -70,7 +62,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="medicalScreening">Medical Screening</label>
-              <input formControlName="medicalScreening" type="date" value="{{user.medicalScreening}}" class="form-control" id="medicalScreening">
+              <input formControlName="medicalScreening" type="text" value="{{user.medicalScreening | date}}" class="form-control" id="medicalScreening" disabled="true">
             </div>
           </div>
           <div class="col-sm-6">
@@ -84,26 +76,26 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="badgeNumber">Badge Number</label>
-              <input formControlName="badgeNumber" type="text" value="{{user.badgeNumber}}" class="form-control" id="badgeNumber" placeholder="Typ here...">
+              <input formControlName="badgeNumber" type="text" value="{{user.badgeNumber}}" class="form-control" id="badgeNumber" disabled="true">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="badgeExpirationDate">Badge Expiration Date</label>
-              <input formControlName="badgeExpirationDate" type="date" value="{{user.badgeExpirationDate}}" class="form-control" id="badgeExpirationDate">
+              <input formControlName="badgeExpirationDate" type="test" value="{{user.badgeExpirationDate | date}}" class="form-control" id="badgeExpirationDate" disabled="true">
             </div>
           </div>
         </div>
         <div class="row">
-          <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Change data</button>
+          <button href="javascript:void(0);" (click)=onSubmit() class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Change data</button>
           <a href="javascript:void(0);" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirm-delete-item"><span [innerHTML]="'trash-2' | feather:16"></span> Delete profile</a>
         </div>
       </form>
     </div>
   </div>
-  <div class="col-xs-0 col-sm-4 col-md-4 col-lg-4 col-xl-5">
+  <!-- <div class="col-xs-0 col-sm-4 col-md-4 col-lg-4 col-xl-5">
     <a class="btn btn-primary btn-xl js-scroll-trigger mt-4" (click)="logout()" href="javascript:void(0);"><span [innerHTML]="'log-out' | feather:16"></span> Logout</a>
-  </div>
+  </div> -->
 </div>
 
 <div class="modal fade" id="confirm-delete-item" tabindex="-1" role="dialog" *ngIf="user">

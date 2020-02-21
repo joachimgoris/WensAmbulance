@@ -22,6 +22,7 @@ import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { NewPatientComponent } from './components/new-patient/new-patient.component';
 import { WishesComponent } from './components/wishes/wishes.component';
 import { NewWishComponent } from './components/new-wish/new-wish.component';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NewWishComponent } from './components/new-wish/new-wish.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    SelectDropDownModule
   ],
   providers: [
     AuthGuardService,
