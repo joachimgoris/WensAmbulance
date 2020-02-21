@@ -3,7 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../../services/api.service';
 import {Patient} from '../../models/patient.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {User} from '../../models/user.model';
+import { User } from '../../models/user.model';
+
 
 @Component({
   selector: 'app-volunteer',
@@ -39,7 +40,8 @@ export class VolunteerComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const id = +params['id'];
+      const id = params['id'];
+      console.log(id);
       this.apiService.getUser(id.toString()).subscribe((value) => {
         this.user = value;
       }, (error) => {
