@@ -77,6 +77,54 @@ namespace WensAmbulance.API.Controllers
             return BadRequest(ModelState);
         }
 
+        [HttpPost("registeradmin")]
+        [SwaggerOperation(nameof(RegisterAdmin))]
+        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
+        {
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            if (user != null)
+            {
+                return BadRequest();
+            }
+
+            user = new User
+            {
+                UserName = $"{model.FirstName}_{model.LastName}",
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Address = model.Address,
+                SSN = model.SSN,
+                Certificate = model.Certificate,
+                MedicalScreening = model.MedicalScreening,
+                BadgeNumber = model.BadgeNumber,
+                BadgeExpirationDate = model.BadgeExpirationDate,
+                ShirtSize = model.ShirtSize,
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+
+                var role1 = Role.Constants.Admin;
+                await EnsureRoleExists(role1);
+                await _userManager.AddToRoleAsync(user, role1);
+
+                return Ok(new { Username = user.UserName });
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.Code, error.Description);
+            }
+
+            return BadRequest(ModelState);
+        }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]LoginModel model)
         {
