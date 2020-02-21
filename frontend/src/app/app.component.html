@@ -1,6 +1,3 @@
-<app-navbar id="nav"></app-navbar>
+<app-navbar *ngIf="visible" id="nav"></app-navbar>
 <div class="bg"></div>
-<div class="top" [@FadeAnimation]="getAnimationData(routerOutlet)">
-  <router-outlet #routerOutlet="outlet"></router-outlet>
-</div>
-
+<router-outlet #routerOutlet="outlet"></router-outlet>

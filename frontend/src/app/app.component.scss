@@ -22,3 +22,7 @@ p, h1, h2, h3, a {
   z-index: 1;
   width: 100vw;
 }
+
+router-outlet {
+  display: inline-block;
+}

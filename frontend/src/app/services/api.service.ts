@@ -109,6 +109,12 @@ export class ApiService {
       return this.http.get<Wish[]>(url, this.optionsWithCredentials);
     }
 
+    getAllWishesCensored(): Observable<Wish[]> {
+      const url = `${this._apiURL}/Wish/censored`;
+
+      return this.http.get<Wish[]>(url, this.optionsWithCredentials);
+    }
+
     addWish(wish: Wish): Observable<any> {
       const url = `${this._apiURL}/Wish`;
 
@@ -126,7 +132,7 @@ export class ApiService {
 
       return this.http.delete<any>(url, this.optionsWithCredentials);
     }
-    
+
     getWish(id: string): Observable<Wish> {
       const url = `${this._apiURL}/Wish/${id}`;
 

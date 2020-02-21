@@ -19,7 +19,7 @@ export class AuthService {
     checkLoggedIn(): Observable<boolean> {
         return new Observable<boolean>((observer) => {
             if (sessionStorage.getItem('Token') == null) {
-              observer.next(true);
+              observer.next(false);
             } else {
               observer.next(true); // Maybe check if token is still valid
             }
