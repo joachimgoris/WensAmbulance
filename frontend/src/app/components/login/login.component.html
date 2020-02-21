@@ -1,0 +1,132 @@
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 login-form-1">
+      <img class="center" src="assets/logo.png">
+      <h3>Welkom bij Ambulance Wens België vzw</h3>
+      <form action="">
+        <div class="form-group">
+          <input #username type="text" class="form-control" placeholder="Email" value="" />
+        </div>
+        <div class="form-group">
+          <input #password type="password" class="form-control" placeholder="Wachtwoord" value="" />
+        </div>
+        <div class="form-group">
+          <input (click)="login(username.value, password.value)" type="submit" class="btn btn-primary" value="Login" />
+        </div>
+        <div class="form-group">
+          <a href="javascript:void(0);" data-toggle="modal" data-target="#register" class="bold">Nog geen account?</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+<div class="modal fade" id="register" tabindex="-1" role="dialog" *ngIf="username">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="m-0">Registreren</p>
+        <button class="close" type="button" data-dismiss="modal">
+          <span aria-hidden="true"><span [innerHTML]="'x' | feather:16"></span></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="userForm">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="username">Gebruikersnaam</label>
+                <input formControlName="username" type="text" class="form-control" id="username" placeholder="Typ hier...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="firstname">Voornaam</label>
+                <input formControlName="firstname" type="text" class="form-control" id="firstname" placeholder="Typ hier...">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="lastname">Achternaam</label>
+                <input formControlName="lastname" type="text" class="form-control" id="lastname" placeholder="Typ hier...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input formControlName="email" type="email" class="form-control" id="email" placeholder="Typ hier...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="password">Wachtwoord</label>
+                <input formControlName="password" type="password" class="form-control" id="password" placeholder="">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="address">Adres</label>
+                <input formControlName="address" type="text" class="form-control" id="address" placeholder="Typ hier...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="ssn">Rijksregisternummer</label>
+                <input formControlName="ssn" type="text" class="form-control" id="ssn" placeholder="Typ hier...">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="certificate">Certificaat</label>
+                <input formControlName="certificate" type="text" class="form-control" id="certificate" placeholder="Typ hier...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="medicalScreening">Medisch onderzoek</label>
+                <input formControlName="medicalScreening" type="date" class="form-control" id="medicalScreening">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="shirtSize">Shirt grootte</label>
+                <input formControlName="shirtSize" type="text" class="form-control" id="shirtSize" placeholder="Typ hier...">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="badgeNumber">Badge Nummer</label>
+                <input formControlName="badgeNumber" type="text" class="form-control" id="badgeNumber" placeholder="Typ hier...">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="badgeExpirationDate">Badge Vervaldatum</label>
+                <input formControlName="badgeExpirationDate" type="date" class="form-control" id="badgeExpirationDate">
+              </div>
+            </div>
+          </div>
+          <div class="row ml-1">
+            <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="ml-4">
+  <div class="row">
+    <h1>Kies een wens</h1>
+  </div>
+  <ul class="list-group col-7 col-sm-12">
+    <li *ngFor="let wish of wishes; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
+      <a>{{wish.location}} - {{wish.date | date:'MMM d, y, h:mm:ss a'}}</a>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Kies deze wens!</label>
+      </div>
+    </li>
+  </ul>
+</div>

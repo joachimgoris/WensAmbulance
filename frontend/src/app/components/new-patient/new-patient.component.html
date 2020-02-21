@@ -1,0 +1,81 @@
+<div class="container-fluid row">
+  <div class="col-xs-0 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+  <div class="card col-xs-12 col-sm-7 col-md-7 col-lg-7 col-xl-6 mt-4">
+    <h5 class="card-header">
+      Nieuwe patiënt<br>
+    </h5>
+    <div class="card-body">
+      <form [formGroup]="userForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="firstname">Voornaam</label>
+              <input formControlName="firstname" type="text" class="form-control" id="firstname" placeholder="Typ hier...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="lastname">Achternaam</label>
+              <input formControlName="lastname" type="text" class="form-control" id="lastname" placeholder="Typ hier...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input formControlName="email" type="email" class="form-control" id="email" placeholder="Typ hier...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="address">Adres</label>
+              <input formControlName="address" type="text" class="form-control" id="address" placeholder="Typ hier...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="birthDate">Geboortedatum</label>
+              <input formControlName="birthDate" type="date" class="form-control" id="birthDate" placeholder="Typ hier...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pickupLocation">Ophaallocatie</label>
+              <input formControlName="pickupLocation" type="text" class="form-control" id="pickupLocation" placeholder="Typ hier...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="DNRCode">DNR Code</label>
+              <input formControlName="DNRCode" type="text" class="form-control" id="DNRCode" placeholder="Typ hier...">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="accessibility">Toegankelijkheid</label>
+              <input formControlName="accessibility" type="text" class="form-control" id="accessibility" placeholder="Typ hier...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="medicalNotes">Medische nota's</label>
+              <input formControlName="medicalNotes" type="text" class="form-control" id="medicalNotes" placeholder="Typ hier...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Patiënt toevoegen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

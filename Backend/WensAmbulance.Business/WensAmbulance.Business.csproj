@@ -1,7 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WensAmbulance.Business.Abstractions\WensAmbulance.Business.Abstractions.csproj" />
+    <ProjectReference Include="..\WensAmbulance.Data\WensAmbulance.Data.csproj" />
+    <ProjectReference Include="..\WensAmbulance.Domain\WensAmbulance.Domain.csproj" />
+  </ItemGroup>
 
 </Project>

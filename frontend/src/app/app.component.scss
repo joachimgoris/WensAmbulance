@@ -1,0 +1,28 @@
+p, h1, h2, h3, a {
+  color: #00A2AE;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("../assets/background.jpg");
+
+  /* Half height */
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.top {
+  //position: fixed;
+  z-index: 1;
+  width: 100vw;
+}
+
+router-outlet {
+  display: inline-block;
+}

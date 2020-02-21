@@ -1,0 +1,13 @@
+<div class="ml-4">
+  <div class="row">
+  <h1>Patiënten</h1>
+  </div>
+  <div class="row mb-2">
+    <button (click)="new()" class="btn btn-primary">Patiënt toevoegen</button>
+  </div>
+  <ul class="pointer list-group col-4">
+    <li (click)="patientSelected(patient)" *ngFor="let patient of patients; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
+      <a>{{patient.firstname}} {{patient.lastname}}</a>
+    </li>
+  </ul>
+</div>
