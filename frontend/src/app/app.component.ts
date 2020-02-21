@@ -21,6 +21,8 @@ export class AppComponent {
   checkNav() {
     if (sessionStorage.getItem('Token') != null) {
       this.visible = true;
+    } else {
+      this.visible = false;
     }
     setTimeout(() => {
       this.checkNav();
