@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../models/user.model';
 import {ApiService} from '../../services/api.service';
 import { TokenInformationService } from 'src/app/services/token-information.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { TokenInformationService } from 'src/app/services/token-information.serv
 export class LoginComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor(private apiService: ApiService, private tokenInformationService: TokenInformationService) { }
+  constructor(private apiService: ApiService, private tokenInformationService: TokenInformationService, private router: Router) { }
 
   ngOnInit() {
     this.userForm = new FormGroup({
@@ -55,9 +56,9 @@ export class LoginComponent implements OnInit {
 
   login(username: string, password: string): void {
     this.apiService.login(username, password).subscribe((value) => {
-      
+
       let authenticationToken: string = value['signinToken'];
-      
+
       if(authenticationToken == null){
         console.log("Something's fishy");
         return;
@@ -65,7 +66,8 @@ export class LoginComponent implements OnInit {
 
       sessionStorage.setItem('Token', authenticationToken);
       //TODO navigate to dashboard
-      
+      this.router.navigate(['/my-wishes']);
+
     }, (error) => {
       console.log(error.message);
     });
