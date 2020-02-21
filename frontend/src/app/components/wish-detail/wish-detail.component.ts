@@ -16,6 +16,7 @@ export class WishDetailComponent implements OnInit {
   wish: Wish;
   private patient: Patient;
   private user: User;
+  private otherUser: User;
 
   constructor(private apiService: ApiService, private route: ActivatedRoute) { }
 
@@ -33,7 +34,7 @@ export class WishDetailComponent implements OnInit {
 
   createDummyData(){
     this.createDummyPatient();
-    this.createDummyUser();
+    this.createDummyUsers();
     this.createDummyWish();
   }
 
@@ -51,8 +52,34 @@ export class WishDetailComponent implements OnInit {
     this.patient.medicalNotes = "FooBar";
   }
 
-  createDummyUser(){
+  createDummyUsers(){
+    this.user = new User();
+    this.user.id = '1';
+    this.user.username = 'Jan Janssens';
+    this.user.firstname = 'Jan';
+    this.user.lastname = 'Janssens';
+    this.user.email = 'janjanssens@gmail.com';
+    this.user.address = 'Kesselaan 15 3500 Hasselt';
+    this.user.ssn = '0123456789';
+    this.user.certificate = 'Een certificaat';
+    this.user.badgeNumber = '0123456789';
+    this.user.badgeExpirationDate = new Date();
+    this.user.shirtSize = 'L';
+    this.user.userWishes = null;
 
+    this.otherUser = new User();
+    this.otherUser.id = '1';
+    this.otherUser.username = 'Dirk Goosen';
+    this.otherUser.firstname = 'Dirk';
+    this.otherUser.lastname = 'Goosen';
+    this.otherUser.email = 'dirkgoosen@gmail.com';
+    this.otherUser.address = 'Kesselaan 16 3500 Hasselt';
+    this.otherUser.ssn = '0123456789';
+    this.otherUser.certificate = 'Een certificaat';
+    this.otherUser.badgeNumber = '0123456789';
+    this.otherUser.badgeExpirationDate = new Date();
+    this.otherUser.shirtSize = 'L';
+    this.otherUser.userWishes = null;
   }
 
   createDummyWish(){
@@ -64,8 +91,11 @@ export class WishDetailComponent implements OnInit {
     this.wish.description = "This man wants to see the sea at Oostende one more time before going to the eternal fields.";
     this.wish.date = new Date();
     this.wish.location = "Oostende";
-    this.wish.volunteers = null
+    this.wish.volunteers = new Array();
+    this.wish.volunteers.push(this.otherUser);
+    this.wish.volunteers.push(this.user);
     this.wish.patient = this.patient;
     this.wish.evaluation = null;
+
   }
 }

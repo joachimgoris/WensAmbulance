@@ -2,6 +2,7 @@
     <div class="row">
     <!--<img class="left" src="assets/logo2.png">-->
       <div class="col-md-12 center-text">
+        <br>
         <h3><u><b>Contact person:</b> </u></h3>
         <br>
         <p class="center-text"> {{ wish.requestorName }} | {{ wish.requestorEmail }} | {{ wish.requestorPhoneNumber }}</p>
@@ -30,6 +31,6 @@
         <hr>
         <h3><u><b>Volunteers:</b> </u></h3>
         <br>
-        <p>//TODO</p>
+      <p *ngFor="let volunteer of wish.volunteers">{{ volunteer.firstname}} {{volunteer.lastname}}</p>
     </div>
   </div>
