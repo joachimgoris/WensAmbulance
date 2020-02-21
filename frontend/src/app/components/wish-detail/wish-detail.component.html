@@ -13,7 +13,7 @@
         <p>Title: {{ wish.title }}</p>
         <p>{{ wish.description }}</p>
         <p>Location: {{ wish.location }}</p>
-        <p >Date: {{ wish.date }}</p>
+        <p >Date: {{ wish.date | date }}</p>
         <br>
         <hr>
         <h3><u><b>Patient:</b> </u></h3>
@@ -22,7 +22,7 @@
         <p>Last Name: {{ wish.patient.lastname }}</p>
         <p>Email: {{ wish.patient.email }}</p>
         <p>Address: {{ wish.patient.address }}</p>
-        <p>Birthday: {{ wish.patient.birthDate }}</p>
+        <p>Birthday: {{ wish.patient.birthDate | date }}</p>
         <p>Pickup Location: {{ wish.patient.pickupLocation }}</p>
         <p>DNR Code: {{ wish.patient.DNRCode }}</p>
         <p>Accessibility: {{ wish.patient.accessibility }}</p>
