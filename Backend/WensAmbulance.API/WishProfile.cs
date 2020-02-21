@@ -9,6 +9,7 @@ namespace WensAmbulance.API
         public WishProfile()
         {
             CreateMap<Wish, WishDto>();
+            CreateMap<Wish, CensoredWishDto>();
         }
     }
 }
