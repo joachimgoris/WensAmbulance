@@ -18,11 +18,7 @@ export class PatientsComponent implements OnInit {
       this.patients = value;
     }, (error) => {
       console.log(error.message);
-      const patient = new Patient();
-      patient.firstname = 'Jan';
-      patient.lastname = 'Veke';
-      patient.id = '123';
-      this.patients = [patient, patient, patient];
+      this.patients = this.getPatients();
     });
   }
 
@@ -32,6 +28,47 @@ export class PatientsComponent implements OnInit {
 
   new() {
     this.router.navigate(['/patient']);
+  }
+
+  getPatients(): Patient[] {
+    let p = [];
+    let patient = new Patient();
+    patient.id = '1';
+    patient.firstname = "Jan";
+    patient.lastname = "Vekemans";
+    patient.email = "jan.vekemans@outlook.be";
+    patient.address = "Kanariestraat 22";
+    patient.birthDate = new Date();
+    patient.pickupLocation = "UZ Diest";
+    patient.DNRCode = "12K78";
+    patient.accessibility = "Good";
+    patient.medicalNotes = "/";
+    p = p.concat(patient);
+    patient = new Patient();
+    patient.id = '2';
+    patient.firstname = "Tim";
+    patient.lastname = "Bergen";
+    patient.email = "foobar@foo.bar";
+    patient.address = "foobarstreet";
+    patient.birthDate = new Date();
+    patient.pickupLocation = "foobarplace";
+    patient.DNRCode = "Foo";
+    patient.accessibility = "Bar";
+    patient.medicalNotes = "FooBar";
+    p = p.concat(patient);
+    patient = new Patient();
+    patient.id = '3';
+    patient.firstname = "Jannes";
+    patient.lastname = "Avers";
+    patient.email = "foobar@foo.bar";
+    patient.address = "foobarstreet";
+    patient.birthDate = new Date();
+    patient.pickupLocation = "foobarplace";
+    patient.DNRCode = "Foo";
+    patient.accessibility = "Bar";
+    patient.medicalNotes = "FooBar";
+    p = p.concat(patient);
+    return p;
   }
 
 }
