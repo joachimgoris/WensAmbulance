@@ -19,12 +19,21 @@ export class WishesComponent implements OnInit {
       this.wishes = value;
     }, (error) => {
       console.log(error.message);
-      const patient = new Wish();
-      patient.title = 'titleke';
-      patient.description = 'desc';
-      patient.requestorName = 'Janneke maan';
-      patient.id = '1234';
-      this.wishes = [patient, patient, patient];
+      let patient = new Wish();
+      patient.id = '1';
+      patient.date = new Date();
+      patient.requestorName = 'Jan Konings';
+      this.wishes = this.wishes.concat(patient);
+      patient = new Wish();
+      patient.id = '2';
+      patient.date = new Date();
+      patient.requestorName = 'Bert Clijsner';
+      this.wishes = this.wishes.concat(patient);
+      patient = new Wish();
+      patient.id = '3';
+      patient.date = new Date();
+      patient.requestorName = 'Berend Brokkepap';
+      this.wishes = this.wishes.concat(patient);
     });
   }
 
