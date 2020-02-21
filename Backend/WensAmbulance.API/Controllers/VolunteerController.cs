@@ -49,7 +49,7 @@ namespace WensAmbulance.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<User>> UpdateVolunteer([FromBody] UserDto userDto)
+        public async Task<ActionResult> UpdateVolunteer([FromBody] UserDto userDto)
         {
             var user = await _userManager.FindByIdAsync(userDto.Id);
 

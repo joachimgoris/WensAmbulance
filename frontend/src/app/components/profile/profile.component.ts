@@ -57,7 +57,21 @@ export class ProfileComponent implements OnInit {
     user.badgeExpirationDate = this.userForm.get('badgeExpirationDate').value;
     user.shirtSize = this.userForm.get('shirtSize').value;
     console.log("form: " + user);
-    this.apiService.modifyUser(user).subscribe((value) => {
+
+    this.user.username = user.username ? user.username : this.user.username;
+    this.user.firstname = user.firstname ? user.firstname : this.user.firstname;
+    this.user.lastname = user.lastname ? user.lastname : this.user.lastname;
+    this.user.email = user.email ? user.email : this.user.email;
+    this.user.address = user.address ? user.address : this.user.address;
+    this.user.ssn = user.ssn ? user.ssn : this.user.ssn;
+    this.user.certificate = user.certificate ? user.certificate : this.user.certificate;
+    this.user.medicalScreening = user.medicalScreening ? user.medicalScreening : this.user.medicalScreening;
+    this.user.badgeNumber = user.badgeNumber ? user.badgeNumber : this.user.badgeNumber;
+    this.user.badgeExpirationDate = user.badgeExpirationDate ? user.badgeExpirationDate : this.user.badgeExpirationDate;
+    this.user.shirtSize = user.shirtSize ? user.shirtSize : this.user.shirtSize;
+
+
+    this.apiService.modifyUser(this.user).subscribe((value) => {
       console.log('User saved!');
     }, (error) => {
       console.log(error.message);
