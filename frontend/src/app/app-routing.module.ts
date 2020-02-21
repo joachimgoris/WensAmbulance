@@ -69,11 +69,6 @@ const routes: Routes = [
     component: PatientComponent
   },
   {
-    path: 'my-wishes',
-    canActivate: [AuthGuardService],
-    component: DashboardComponent
-  },
-  {
     path: '**',
     canActivate: [AuthGuardService],
     component: DashboardComponent

@@ -9,7 +9,14 @@ import {FadeAnimation} from './animation';
   animations: [FadeAnimation]
 })
 export class AppComponent {
+  visible = false; // TODO
   getAnimationData(outlet: RouterOutlet) {
     return outlet.isActivated ? outlet.activatedRoute : '';
+  }
+
+  constructor() {
+    if (sessionStorage.getItem('Token') != null) {
+      this.visible = true;
+    }
   }
 }
