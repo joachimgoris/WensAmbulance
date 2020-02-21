@@ -3,7 +3,7 @@ import {Patient} from './patient.model';
 
 export class Wish {
   id: string;
-  requestorName: string;
+  wishRequestor: string;
   requestorEmail: string;
   requestorPhoneNumber: string;
   title: string;
