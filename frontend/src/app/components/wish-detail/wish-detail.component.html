@@ -3,33 +3,33 @@
     <!--<img class="left" src="assets/logo2.png">-->
       <div class="col-md-12 center-text">
         <br>
-        <h3><u><b>Contact person:</b> </u></h3>
+        <h3><u><b>Contactpersoon:</b> </u></h3>
         <br>
         <p class="center-text"> {{ wish.requestorName }} | {{ wish.requestorEmail }} | {{ wish.requestorPhoneNumber }}</p>
         <br>
         <hr>
-        <h3><u><b>Wish:</b> </u></h3>
+        <h3><u><b>Wens:</b> </u></h3>
         <br>
-        <p>Title: {{ wish.title }}</p>
+        <p>Titel: {{ wish.title }}</p>
         <p>{{ wish.description }}</p>
-        <p>Location: {{ wish.location }}</p>
-        <p >Date: {{ wish.date | date }}</p>
+        <p>Locatie: {{ wish.location }}</p>
+        <p >Datum: {{ wish.date | date }}</p>
         <br>
         <hr>
-        <h3><u><b>Patient:</b> </u></h3>
+        <h3><u><b>Patiënt:</b> </u></h3>
         <br>
-        <p>First Name: {{ wish.patient.firstname }}</p>
-        <p>Last Name: {{ wish.patient.lastname }}</p>
+        <p>Voornaam: {{ wish.patient.firstname }}</p>
+        <p>Achternaam: {{ wish.patient.lastname }}</p>
         <p>Email: {{ wish.patient.email }}</p>
-        <p>Address: {{ wish.patient.address }}</p>
-        <p>Birthday: {{ wish.patient.birthDate | date }}</p>
-        <p>Pickup Location: {{ wish.patient.pickupLocation }}</p>
+        <p>Adres: {{ wish.patient.address }}</p>
+        <p>Geboortedatum: {{ wish.patient.birthDate | date }}</p>
+        <p>Ophaallocatie: {{ wish.patient.pickupLocation }}</p>
         <p>DNR Code: {{ wish.patient.DNRCode }}</p>
-        <p>Accessibility: {{ wish.patient.accessibility }}</p>
-        <p>Medical Notes: {{ wish.patient.medicalNotes }}</p>
+        <p>Toegankelijkheid: {{ wish.patient.accessibility }}</p>
+        <p>Medische nota's: {{ wish.patient.medicalNotes }}</p>
         <br>
         <hr>
-        <h3><u><b>Volunteers:</b> </u></h3>
+        <h3><u><b>Vrijwilligers:</b> </u></h3>
         <br>
       <p *ngFor="let volunteer of wish.volunteers">{{ volunteer.firstname}} {{volunteer.lastname}}</p>
     </div>

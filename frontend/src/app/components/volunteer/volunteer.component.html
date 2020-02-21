@@ -9,22 +9,22 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <label for="username">Username</label>
-              <input formControlName="username" type="text" value="{{user.username}}" class="form-control" id="username" placeholder="Typ here...">
+              <label for="username">Gebruikersnaam</label>
+              <input formControlName="username" type="text" value="{{user.username}}" class="form-control" id="username" placeholder="Typ hier...">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="firstname">Firstname</label>
-              <input formControlName="firstname" type="text" value="{{user.firstname}}" class="form-control" id="firstname" placeholder="Typ here...">
+              <label for="firstname">Voornaam</label>
+              <input formControlName="firstname" type="text" value="{{user.firstname}}" class="form-control" id="firstname" placeholder="Typ hier...">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="lastname">Lastname</label>
-              <input formControlName="lastname" type="text" value="{{user.lastname}}" class="form-control" id="lastname" placeholder="Typ here...">
+              <label for="lastname">Achternaam</label>
+              <input formControlName="lastname" type="text" value="{{user.lastname}}" class="form-control" id="lastname" placeholder="Typ hier...">
             </div>
           </div>
         </div>
@@ -32,14 +32,14 @@
           <div class="col-sm-12">
             <div class="form-group">
               <label for="email">Email</label>
-              <input formControlName="email" type="email" value="{{user.email}}" class="form-control" id="email" placeholder="Typ here...">
+              <input formControlName="email" type="email" value="{{user.email}}" class="form-control" id="email" placeholder="Typ hier...">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password">Wachtwoord</label>
               <input formControlName="password" type="password" value="{{user.password}}" class="form-control" id="password" placeholder="">
             </div>
           </div>
@@ -47,56 +47,56 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <label for="address">Address</label>
-              <input formControlName="address" type="text" value="{{user.address}}" class="form-control" id="address" placeholder="Typ here...">
+              <label for="address">Adres</label>
+              <input formControlName="address" type="text" value="{{user.address}}" class="form-control" id="address" placeholder="Typ hier...">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="ssn">Social Security Number</label>
-              <input formControlName="ssn" type="text" value="{{user.ssn}}" class="form-control" id="ssn" placeholder="Typ here...">
+              <label for="ssn">Rijksregisternummer</label>
+              <input formControlName="ssn" type="text" value="{{user.ssn}}" class="form-control" id="ssn" placeholder="Typ hier...">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="certificate">Certificate</label>
-              <input formControlName="certificate" type="text" value="{{user.certificate}}" class="form-control" id="certificate" placeholder="Typ here...">
+              <label for="certificate">Certificaat</label>
+              <input formControlName="certificate" type="text" value="{{user.certificate}}" class="form-control" id="certificate" placeholder="Typ hier...">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="medicalScreening">Medical Screening</label>
+              <label for="medicalScreening">Medisch onderzoek</label>
               <input formControlName="medicalScreening" type="date" value="{{user.medicalScreening}}" class="form-control" id="medicalScreening">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="shirtSize">Shirt Size</label>
-              <input formControlName="shirtSize" type="text" value="{{user.shirtSize}}" class="form-control" id="shirtSize" placeholder="Typ here...">
+              <label for="shirtSize">Shirt grootte</label>
+              <input formControlName="shirtSize" type="text" value="{{user.shirtSize}}" class="form-control" id="shirtSize" placeholder="Typ hier...">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="badgeNumber">Badge Number</label>
-              <input formControlName="badgeNumber" type="text" value="{{user.badgeNumber}}" class="form-control" id="badgeNumber" placeholder="Typ here...">
+              <label for="badgeNumber">Badge Nummer</label>
+              <input formControlName="badgeNumber" type="text" value="{{user.badgeNumber}}" class="form-control" id="badgeNumber" placeholder="Typ hier...">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="badgeExpirationDate">Badge Expiration Date</label>
+              <label for="badgeExpirationDate">Badge Vervaldatum</label>
               <input formControlName="badgeExpirationDate" type="date" value="{{user.badgeExpirationDate}}" class="form-control" id="badgeExpirationDate">
             </div>
           </div>
         </div>
         <div class="row">
-          <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Change data</button>
-          <a href="javascript:void(0);" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirm-delete-item"><span [innerHTML]="'trash-2' | feather:16"></span> Delete volunteer</a>
+          <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Data veranderen</button>
+          <a href="javascript:void(0);" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirm-delete-item"><span [innerHTML]="'trash-2' | feather:16"></span> Vrijwilliger verwijderen</a>
         </div>
       </form>
     </div>

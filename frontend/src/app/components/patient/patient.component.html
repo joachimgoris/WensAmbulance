@@ -9,13 +9,13 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="firstname">Firstname</label>
+              <label for="firstname">Voornaam</label>
               <input formControlName="firstname" type="text" value="{{user.firstname}}" class="form-control" id="firstname" placeholder="Typ here...">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="lastname">Lastname</label>
+              <label for="lastname">Achternaam</label>
               <input formControlName="lastname" type="text" value="{{user.lastname}}" class="form-control" id="lastname" placeholder="Typ here...">
             </div>
           </div>
@@ -31,7 +31,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <label for="address">Address</label>
+              <label for="address">Adres</label>
               <input formControlName="address" type="text" value="{{user.address}}" class="form-control" id="address" placeholder="Typ here...">
             </div>
           </div>
@@ -39,13 +39,13 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="birthDate">Birth Date</label>
+              <label for="birthDate">Geboortedatum</label>
               <input formControlName="birthDate" type="date" value="{{user.birthDate}}" class="form-control" id="birthDate" placeholder="Typ here...">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="pickupLocation">Pickup Location</label>
+              <label for="pickupLocation">Ophaallocatie</label>
               <input formControlName="pickupLocation" type="text" value="{{user.pickupLocation}}" class="form-control" id="pickupLocation" placeholder="Typ here...">
             </div>
           </div>
@@ -59,7 +59,7 @@
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="accessibility">Accessibility</label>
+              <label for="accessibility">toegankelijkheid</label>
               <input formControlName="accessibility" type="text" value="{{user.accessibility}}" class="form-control" id="accessibility" placeholder="Typ here...">
             </div>
           </div>
@@ -67,14 +67,14 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <label for="medicalNotes">Medical Notes</label>
+              <label for="medicalNotes">Medische nota's</label>
               <input formControlName="medicalNotes" type="text" value="{{user.medicalNotes}}" class="form-control" id="medicalNotes" placeholder="Typ here...">
             </div>
           </div>
         </div>
         <div class="row">
-          <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Change patient data</button>
-          <a href="javascript:void(0);" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirm-delete-item"><span [innerHTML]="'trash-2' | feather:16"></span> Delete patient</a>
+          <button href="javascript:void(0);" (click)=onSubmit() [disabled]="!userForm.valid" class="btn btn-primary" ><span [innerHTML]="'save' | feather:16"></span> Data aanpassen</button>
+          <a href="javascript:void(0);" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirm-delete-item"><span [innerHTML]="'trash-2' | feather:16"></span> Patiënt verwijderen</a>
         </div>
       </form>
     </div>
@@ -91,11 +91,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Are your sure you want to delete your account?<br><br>This means you cannot reverse this action and you will no longer have access to this website!</p>
+        <p>Ben je zeker dat je deze patiënt wilt verwijderen?<br><br></p>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" data-dismiss="modal"><span [innerHTML]="'x' | feather:16"></span> No</button>
-        <button class="btn btn-danger" data-dismiss="modal" (click)="deletePatient()"><span [innerHTML]="'trash-2' | feather:16"></span> Yes</button>
+        <button class="btn btn-secondary" data-dismiss="modal"><span [innerHTML]="'x' | feather:16"></span> Nee</button>
+        <button class="btn btn-danger" data-dismiss="modal" (click)="deletePatient()"><span [innerHTML]="'trash-2' | feather:16"></span> Ja</button>
       </div>
     </div>
   </div>
