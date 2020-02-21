@@ -9,7 +9,7 @@ import {FadeAnimation} from './animation';
   animations: [FadeAnimation]
 })
 export class AppComponent {
-  visible = false;
+  visible = true; // TODO
   getAnimationData(outlet: RouterOutlet) {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }

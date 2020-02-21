@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
 
       sessionStorage.setItem('Token', authenticationToken);
       //TODO navigate to dashboard
-      this.router.navigate(['/my-wishes']);
+      this.router.navigate(['/']);
 
     }, (error) => {
       console.log(error.message);
